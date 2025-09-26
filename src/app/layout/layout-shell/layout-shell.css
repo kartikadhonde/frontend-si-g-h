@@ -1,1 +1,5 @@
+/* Use Montserrat font in layout shell */
+:host {
+	font-family: var(--font-sans);
+}
 main { min-height: 100dvh; }

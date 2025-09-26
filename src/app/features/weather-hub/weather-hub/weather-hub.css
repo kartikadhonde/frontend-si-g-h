@@ -1,3 +1,5 @@
+/* Use Montserrat font */
+:host { font-family: var(--font-sans); }
 /* Weather Hub semantic styles */
 .row { display:flex; align-items:center; }
 .row-between { display:flex; align-items:center; justify-content:space-between; gap: var(--space-4); }

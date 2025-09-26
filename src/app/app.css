@@ -1,0 +1,4 @@
+/* Ensure App root uses Montserrat */
+:host {
+	font-family: var(--font-sans);
+}

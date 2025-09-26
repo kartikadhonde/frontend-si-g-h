@@ -1,0 +1,2 @@
+/* Use Montserrat font */
+:host { font-family: var(--font-sans); }

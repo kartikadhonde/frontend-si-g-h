@@ -1,3 +1,5 @@
+/* Use Montserrat font */
+:host { font-family: var(--font-sans); }
 /* Prediction History (semantic) */
 .history { background: var(--color-bg-alt); border:1px solid var(--color-border); border-radius: var(--radius-lg); overflow:hidden; }
 .history .panel__header { border-bottom:1px solid var(--color-border); }

@@ -20,7 +20,7 @@
 	--color-success: #22c55e;
 
 	/* Typography */
-	--font-sans: system-ui, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+	--font-sans: 'Montserrat', system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 	--text-xs: 0.75rem;
 	--text-sm: 0.875rem;
 	--text-base: 1rem;
@@ -63,7 +63,7 @@
 /* Reset / Base */
 *,*::before,*::after { box-sizing: border-box; }
 html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-body { margin:0; background: var(--color-bg); color: var(--color-foreground); line-height:1.5; }
+body { margin:0; background: var(--color-bg); color: var(--color-foreground); line-height:1.5; font-family: var(--font-sans); }
 h1,h2,h3,h4,h5,h6 { font-weight:600; line-height:1.15; margin:0 0 var(--space-4); }
 p { margin:0 0 var(--space-4); }
 ul,ol { padding-left: var(--space-6); }

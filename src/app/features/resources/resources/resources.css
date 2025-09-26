@@ -1,3 +1,5 @@
+/* Use Montserrat font */
+:host { font-family: var(--font-sans); }
 /* Resources Feature Semantic Styles */
 
 .resources-page {
