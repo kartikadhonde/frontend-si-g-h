@@ -22,7 +22,7 @@
         <div class="panel__content latest-prediction__content">
           <div class="latest-prediction__summary">
             <div class="latest-prediction__value">
-              {{ latestPrediction()?.predictedYieldValue }} {{ unitLabel(latestPrediction()?.predictedYieldUnit) }}
+              {{ latestPrediction()?.predictedYieldValue | number:'1.2-2' }} {{ unitLabel(latestPrediction()?.predictedYieldUnit) }}
             </div>
             <span [class]="confidenceBadge(latestPrediction()?.confidence)">{{ latestPrediction()?.confidence }} Confidence</span>
           </div>
