@@ -7,6 +7,9 @@ export interface PredictionRecord {
   cropType: string;
   farmLocation: string;
   createdAt: Date;
+  // Optional raw numeric value and unit extracted from backend response
+  predictedYieldValue?: number;
+  predictedYieldUnit?: string;
 }
 
 @Component({

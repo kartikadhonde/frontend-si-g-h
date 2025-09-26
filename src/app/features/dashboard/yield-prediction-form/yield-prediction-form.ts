@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpService, PredictPayload, PredictResponse } from '../../../http-service';
+import { finalize } from 'rxjs/operators';
 
 interface YieldPredictionResult {
   predictedYield: string;
@@ -8,6 +10,8 @@ interface YieldPredictionResult {
   cropType: string;
   farmLocation: string;
   createdAt: Date;
+  predictedYieldValue?: number;
+  predictedYieldUnit?: string;
 }
 
 @Component({
@@ -33,10 +37,10 @@ export class YieldPredictionFormComponent {
   ];
 
   protected readonly seasons = [
-    'Whole Year ', 'Kharif     ', 'Rabi       ', 'Autumn     ', 'Summer     ', 'Winter     '
+    'Whole Year', 'Kharif', 'Rabi', 'Autumn', 'Summer', 'Winter'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private api: HttpService) {
     this.form = this.fb.group({
       crop: ['', Validators.required],
       cropYear: [new Date().getFullYear(), [Validators.required, Validators.min(1950), Validators.max(2100)]],
@@ -53,22 +57,50 @@ export class YieldPredictionFormComponent {
     if (this.form.invalid || this.isSubmitting()) return;
     this.isSubmitting.set(true);
 
-    const value = this.form.value as any;
-    // Mock prediction logic
-    setTimeout(() => {
-      const randomYield = (Math.random() * 5 + 2).toFixed(2); // 2 - 7 tons/ha
-      const confidenceLevels = ['High', 'Medium', 'Low'];
-      const confidence = confidenceLevels[Math.floor(Math.random()*confidenceLevels.length)];
-      const result: YieldPredictionResult = {
-        predictedYield: `${randomYield} tons/ha`,
-        confidence,
-        cropType: value.crop,
-        // Show state as location in history
-        farmLocation: value.state,
-        createdAt: new Date()
-      };
-      this.predictionGenerated.emit(result);
-      this.isSubmitting.set(false);
-    }, 1000);
+    const v = this.form.value as any;
+    const payload: PredictPayload = {
+      Crop: String(v.crop).trim(),
+      Crop_Year: Number(v.cropYear),
+      Season: String(v.season).trim(),
+      State: String(v.state).trim(),
+      Area: Number(v.area),
+      Annual_Rainfall: Number(v.annualRainfall),
+      Fertilizer: Number(v.fertilizer),
+      Pesticide: Number(v.pesticide)
+    };
+
+    this.api
+      .predictYield(payload)
+      .pipe(finalize(() => this.isSubmitting.set(false)))
+      .subscribe({
+        next: (res: PredictResponse) => {
+          // For debugging exact backend values in devtools
+          console.debug('[Predict] response', res);
+          const y = (res.predicted_yield ?? res.yield ?? res.Yield) as number | string | undefined;
+          const yieldNum = typeof y === 'string' ? parseFloat(y) : y;
+          const yieldStr = typeof yieldNum === 'number' && !Number.isNaN(yieldNum) ? yieldNum.toFixed(2) : (y ?? '');
+          const result: YieldPredictionResult = {
+            predictedYield: yieldStr ? `${yieldStr} tons/ha` : '—',
+            confidence: String(res.confidence ?? 'High'),
+            cropType: payload.Crop,
+            farmLocation: payload.State,
+            createdAt: new Date(),
+            predictedYieldValue: typeof yieldNum === 'number' && !Number.isNaN(yieldNum) ? yieldNum : undefined,
+            predictedYieldUnit: typeof (res as any).unit === 'string' ? (res as any).unit as string : undefined
+          };
+          this.predictionGenerated.emit(result);
+        },
+        error: () => {
+          const fallback: YieldPredictionResult = {
+            predictedYield: '—',
+            confidence: 'Low',
+            cropType: payload.Crop,
+            farmLocation: payload.State,
+            createdAt: new Date()
+          };
+          this.predictionGenerated.emit(fallback);
+          alert('Prediction failed. Please ensure the backend is running at http://localhost:8000/predict');
+        }
+      });
   }
 }

@@ -14,7 +14,7 @@ export const routes: Routes = [
 		path: '',
 		component: LayoutShell,
 		children: [
-			{ path: '', component: Landing },
+			{ path: '', component: Dashboard },
 			{ path: 'about', component: About },
 			{ path: 'contact', component: Contact },
 			{ path: 'climate-region', component: ClimateRegion },

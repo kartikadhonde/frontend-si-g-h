@@ -21,8 +21,10 @@
         </div>
         <div class="panel__content latest-prediction__content">
           <div class="latest-prediction__summary">
-            <div class="latest-prediction__value">{{ latestPrediction()?.predictedYield }}</div>
-            <span class="badge badge-secondary latest-prediction__confidence">{{ latestPrediction()?.confidence }} Confidence</span>
+            <div class="latest-prediction__value">
+              {{ latestPrediction()?.predictedYieldValue }} {{ unitLabel(latestPrediction()?.predictedYieldUnit) }}
+            </div>
+            <span [class]="confidenceBadge(latestPrediction()?.confidence)">{{ latestPrediction()?.confidence }} Confidence</span>
           </div>
           <div class="latest-prediction__meta">
             <div><span class="label">Crop:</span> <span class="value">{{ latestPrediction()?.cropType }}</span></div>

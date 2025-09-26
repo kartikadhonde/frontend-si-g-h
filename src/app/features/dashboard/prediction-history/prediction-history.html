@@ -6,7 +6,10 @@
   <div class="history__list">
     <div *ngFor="let p of predictions; let i = index" class="history__item">
       <div class="history__meta">
-        <div class="history__yield">{{ p.predictedYield }}</div>
+        <div class="history__yield">
+          {{ (p.predictedYieldValue != null ? (p.predictedYieldValue | number:'1.2-2') : null) || p.predictedYield }}
+          <ng-container *ngIf="p.predictedYieldValue != null"> {{ p.predictedYieldUnit === 'tons_per_hectare' ? 'tons/ha' : p.predictedYieldUnit }}</ng-container>
+        </div>
         <div class="history__details">{{ p.cropType | titlecase }} • {{ p.farmLocation }} • {{ p.createdAt | date:'short' }}</div>
       </div>
       <span [class]="confidenceBadge(p.confidence)">{{ p.confidence }}</span>

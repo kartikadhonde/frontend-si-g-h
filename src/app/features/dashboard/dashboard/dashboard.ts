@@ -14,16 +14,25 @@ export class Dashboard {
   protected latestPrediction = signal<PredictionRecord | null>(null);
   protected predictions = signal<PredictionRecord[]>([]);
 
-  protected readonly stats = [
-    { title: 'Total Predictions', value: '1,234', change: '+12%', trend: 'up', icon: '📊', color: 'text-secondary' },
-    { title: 'Active Farmers', value: '856', change: '+5%', trend: 'up', icon: '👥', color: 'text-primary' },
-    { title: 'Avg. Accuracy', value: '94.2%', change: '+2.1%', trend: 'up', icon: '📈', color: 'text-secondary' },
-    { title: 'Crops Analyzed', value: '47', change: '+3', trend: 'up', icon: '🌿', color: 'text-primary' }
-  ];
-
   protected handlePredictionResult(result: PredictionRecord) {
     this.latestPrediction.set(result);
-    this.predictions.update(list => [result, ...list].slice(0, 20));
+    this.predictions.update(list => [result, ...list]);
+  }
+
+  // Style the confidence badge similar to history component
+  protected confidenceBadge(conf?: string) {
+    const base = 'badge latest-prediction__confidence';
+    if (!conf) return base;
+    if (conf === 'High') return base + ' badge-secondary';
+    if (conf === 'Medium') return base + ' badge-warning';
+    return base + ' badge-danger';
+  }
+
+  // Human-readable unit label
+  protected unitLabel(u?: string): string {
+    if (!u) return 'tons/ha';
+    if (u === 'tons_per_hectare') return 'tons/ha';
+    return u;
   }
 
 }
