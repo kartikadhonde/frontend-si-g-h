@@ -1,14 +1,15 @@
 <div class="page stack-xl">
 	<!-- Hero Section -->
 	<div class="text-center stack-md">
-		<span class="badge badge-secondary">About FarmWise AI</span>
+		<span class="badge badge-secondary">SIH Hackathon 2024</span>
 		<h1 class="heading-xl">
-			Empowering Farmers with
-			<span class="gradient-hero bg-clip-text text-transparent"> AI Intelligence</span>
+			AI-Powered Crop Yield
+			<span class="gradient-hero bg-clip-text text-transparent"> Prediction & Optimization</span>
 		</h1>
 		<p class="lead">
-			We're dedicated to revolutionizing agriculture through advanced artificial intelligence,
-			helping farmers make data-driven decisions for better yields and sustainable farming practices.
+			An intelligent platform that leverages machine learning models to predict crop yields using 
+			historical agricultural data, weather patterns, and soil health metrics, providing actionable 
+			recommendations for farmers across India.
 		</p>
 	</div>
 
@@ -17,48 +18,46 @@
 		<div class="card-elegant">
 			<div class="card__header">
 				<h2 class="row-sm">
-					<span class="text-secondary">🎯</span>
-					Our Mission
+					<span class="text-secondary">Mission</span>
 				</h2>
 			</div>
 			<div class="card__body">
 				<p class="text-muted">
-					To democratize access to advanced agricultural intelligence, empowering farmers
-					with AI-driven insights that optimize crop yields, reduce resource waste, and
-					promote sustainable farming practices across India and beyond.
+					To develop a scalable AI-based platform that helps small-scale farmers increase 
+					productivity by at least 10% through data-driven insights, with an interface 
+					supporting regional languages for accessibility across India.
 				</p>
 			</div>
 		</div>
 		<div class="card-elegant">
 			<div class="card__header">
 				<h2 class="row-sm">
-					<span class="text-primary">👁️</span>
-					Our Vision
+					<span class="text-primary">Vision</span>
 				</h2>
 			</div>
 			<div class="card__body">
 				<p class="text-muted">
-					To become the leading agricultural AI platform that transforms farming into a
-					data-driven, sustainable, and profitable venture, ensuring food security while
-					preserving our planet's natural resources.
+					To revolutionize agriculture in India by providing farmers with accurate crop yield 
+					predictions and optimization recommendations tailored to specific crops and regional 
+					conditions, ensuring sustainable and profitable farming practices.
 				</p>
 			</div>
 		</div>
 	</div>
 
-	<!-- Core Values -->
+	<!-- Technical Approach -->
 	<div class="space-y-8">
 		<div class="text-center">
-			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Our Core Values</h2>
+			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Technical Implementation</h2>
 			<p class="text-muted" style="max-width: 48rem; margin: 0 auto;">
-				The principles that guide our work and shape our commitment to the farming community
+				Our solution leverages advanced machine learning models and real-time data integration
 			</p>
 		</div>
 		<div class="grid-four">
 			<div *ngFor="let value of values" class="card-elegant text-center hover-lift">
 				<div class="card__body">
 					<div class="tech-icon" style="display:inline-flex; margin-bottom: var(--space-4)">
-						<span class="text-secondary">🌱</span>
+						<span class="text-secondary">{{ value.icon }}</span>
 					</div>
 					<h3 class="" style="font-weight:600; margin-bottom: var(--space-2)">{{ value.title }}</h3>
 						<p class="text-small text-muted">{{ value.description }}</p>
@@ -67,11 +66,11 @@
 		</div>
 	</div>
 
-	<!-- Impact -->
+	<!-- Model Performance -->
 	<div class="space-y-8">
 		<div class="text-center">
-			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Our Impact</h2>
-			<p class="text-muted">Numbers that reflect our commitment to agricultural excellence</p>
+			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Model Performance</h2>
+			<p class="text-muted">Key metrics from our XGBoost-based prediction system</p>
 		</div>
 		<div class="grid-four">
 			<div *ngFor="let a of achievements" class="card-hero text-center">
@@ -83,19 +82,19 @@
 		</div>
 	</div>
 
-	<!-- Team -->
+	<!-- Development Team -->
 	<div class="space-y-8">
 		<div class="text-center">
-			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Meet Our Team</h2>
+			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Development Team</h2>
 			<p class="text-muted" style="max-width: 48rem; margin: 0 auto;">
-				Experienced professionals combining agricultural expertise with cutting-edge technology
+				Passionate developers and researchers working on the SIH hackathon project
 			</p>
 		</div>
 		<div class="grid-four">
 			<div *ngFor="let member of team" class="card-elegant hover-lift">
 				<div class="card__body text-center">
 					<div class="bg-gradient-hero" style="width:64px;height:64px;border-radius:999px;margin:0 auto var(--space-4);display:flex;align-items:center;justify-content:center;">
-						<span>👤</span>
+						<span>{{ member.icon }}</span>
 					</div>
 					<h3 style="font-weight:600; margin-bottom: var(--space-1)">{{ member.name }}</h3>
 					<p class="text-small text-secondary" style="font-weight:500; margin-bottom: var(--space-2)">{{ member.role }}</p>
@@ -106,47 +105,47 @@
 		</div>
 	</div>
 
-	<!-- Story -->
+	<!-- Project Overview -->
 	<div class="card-elegant">
 		<div class="card__header">
 			<h2 class="row-sm">
-				<span class="text-secondary">🏆</span>
-				Our Story
+				<span class="text-secondary">Project Overview</span>
 			</h2>
-			<p class="text-small text-muted">How FarmWise AI came to be</p>
+			<p class="text-small text-muted">AI-Powered Crop Yield Prediction and Optimization</p>
 		</div>
 		<div class="card__body stack-sm text-muted">
 			<p>
-				Founded in 2020 by a team of agricultural scientists and AI researchers, FarmWise AI
-				emerged from a shared vision to bridge the gap between traditional farming wisdom and
-				modern technology. Our founders recognized that while farmers possess invaluable
-				experience, they often lack access to the data-driven insights that could significantly
-				improve their outcomes.
+				This project addresses the critical need for data-driven agricultural insights in India. 
+				Developed for the Smart India Hackathon 2024 under the Agriculture, FoodTech & Rural 
+				Development theme, our solution leverages machine learning models to predict crop yields 
+				using historical agricultural data, weather patterns, and soil health metrics.
 			</p>
 			<p>
-				Starting with a small pilot program in Punjab, we've grown to serve thousands of farmers
-				across India. Our AI models, trained on vast datasets of soil conditions, weather patterns,
-				and crop performance, now provide accurate yield predictions and personalized farming
-				recommendations to help farmers optimize their operations.
+				Our XGBoost-based model processes data from 54 different crops across 30 Indian states, 
+				utilizing target encoding for crops and states, plus one-hot encoding for 6 distinct seasons. 
+				The model is trained with 2000 estimators, a learning rate of 0.3, and early stopping at 50 
+				rounds to prevent overfitting and ensure optimal performance.
 			</p>
 			<p>
-				Today, we continue to innovate, constantly improving our algorithms and expanding our
-				services to meet the evolving needs of the agricultural community. Our commitment remains
-				unchanged: to empower every farmer with the tools they need to succeed in an increasingly
-				complex agricultural landscape.
+				The model analyzes key agricultural factors including crop area, annual rainfall, fertilizer 
+				usage, pesticide application, and seasonal patterns to predict crop yield. The platform 
+				provides actionable recommendations for irrigation, fertilization, and pest control, tailored 
+				to specific crops and regional conditions. With support for regional languages and a focus 
+				on small-scale farmers, we aim to increase agricultural productivity by at least 10% through 
+				intelligent, data-driven farming practices.
 			</p>
 		</div>
 	</div>
 
 	<!-- CTA -->
 	<div class="text-center stack-md" style="padding: var(--space-8) 0;">
-		<h2 class="heading-section">Ready to Transform Your Farming?</h2>
+		<h2 class="heading-section">Ready to Experience AI-Powered Agriculture?</h2>
 		<p class="text-muted" style="max-width: 40rem; margin: 0 auto;">
-			Join thousands of farmers who are already benefiting from AI-powered agricultural insights
+			Explore our platform and discover how machine learning can optimize your crop yield predictions
 		</p>
 		<button class="btn btn-secondary">
-			Get Started Today
-			<span style="margin-left: var(--space-2)">➡️</span>
+			Explore Platform
+			<span style="margin-left: var(--space-2)">→</span>
 		</button>
 	</div>
 </div>
