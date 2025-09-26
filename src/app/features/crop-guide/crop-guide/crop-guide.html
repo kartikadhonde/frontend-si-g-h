@@ -19,7 +19,7 @@
 	<div class="grid-three">
 		<div *ngFor="let crop of filteredCrops()" class="card-elegant crop-card">
 			<div class="crop-thumb">
-				<div class="crop-emoji">{{ crop.image }}</div>
+				<img [src]="'/' + crop.image" [alt]="crop.name" class="crop-image" />
 				<div class="chip-floating text-small">{{ categoryName(crop.category) }}</div>
 			</div>
 			<div class="card-padding stack-md">

@@ -10,8 +10,8 @@
 
 .crop-card { overflow:hidden; }
 .crop-thumb { height: 128px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(37,99,235,0.15)); position:relative; }
-.crop-emoji { font-size: 3.5rem; opacity:.9; transition: transform var(--transition); }
-.crop-card:hover .crop-emoji { transform: scale(1.08); }
+.crop-image { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition); }
+.crop-card:hover .crop-image { transform: scale(1.08); }
 .chip-floating { position:absolute; right: var(--space-2); top: var(--space-2); background: rgba(0,0,0,0.3); backdrop-filter: blur(6px); border:1px solid var(--color-border); padding: 2px var(--space-2); border-radius: var(--radius-md); }
 
 .title { font-size: var(--text-xl); font-weight:700; }
