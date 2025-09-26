@@ -28,9 +28,9 @@ export class WeatherHubComponent {
     forecast: [
       { day:'Today', high:32, low:24, condition:'Partly Cloudy', precipitation:10 },
       { day:'Tomorrow', high:30, low:22, condition:'Light Rain', precipitation:60 },
-      { day:'Wednesday', high:28, low:20, condition:'Rainy', precipitation:80 },
-      { day:'Thursday', high:26, low:19, condition:'Heavy Rain', precipitation:90 },
-      { day:'Friday', high:29, low:21, condition:'Partly Cloudy', precipitation:20 }
+      { day:'Monday', high:28, low:20, condition:'Rainy', precipitation:80 },
+      { day:'Tuesday', high:26, low:19, condition:'Heavy Rain', precipitation:90 },
+      { day:'Wednesday', high:29, low:21, condition:'Partly Cloudy', precipitation:20 }
     ],
     soil: { temperature:25, moisture:45, ph:6.8, nitrogen:42, phosphorus:28, potassium:35 },
     agriculture: { cropStage:'Flowering', irrigationNeeded:false, pestRisk:'Low', diseaseRisk:'Medium', harvestWindow:'15-20 days' }

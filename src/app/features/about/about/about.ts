@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface ValueCard {
-  icon: string; // placeholder name of icon – actual SVG/icon system to be integrated
+  icon: string;
   title: string;
   description: string;
 }
@@ -12,6 +12,7 @@ interface TeamMember {
   role: string;
   expertise: string;
   experience: string;
+  icon: string;
 }
 
 interface Achievement {
@@ -27,65 +28,69 @@ interface Achievement {
   styleUrl: './about.css'
 })
 export class About {
-  // Data migrated from React About.tsx
+  // Technical implementation features
   protected readonly values: ValueCard[] = [
     {
-      icon: 'leaf',
-      title: 'Sustainability',
+      icon: 'ML',
+      title: 'Machine Learning',
       description:
-        'Promoting eco-friendly farming practices that protect our environment for future generations.'
+        'XGBoost regression models trained on historical agricultural data with 2000 estimators and early stopping.'
     },
     {
-      icon: 'bar-chart-3',
-      title: 'Innovation',
-      description: 'Leveraging cutting-edge AI technology to transform traditional farming methods.'
+      icon: 'DATA',
+      title: 'Data Processing',
+      description: 'Advanced preprocessing with target encoding for 54 crops and 30 regions, plus one-hot encoding for 6 seasons.'
     },
     {
-      icon: 'globe',
-      title: 'Accessibility',
+      icon: 'API',
+      title: 'Real-time Integration',
       description:
-        'Making advanced agricultural insights available to farmers of all scales and backgrounds.'
+        'Seamless integration with weather APIs and soil health metrics for accurate predictions.'
     },
     {
-      icon: 'users',
-      title: 'Community',
+      icon: 'LANG',
+      title: 'Regional Support',
       description:
-        'Building a connected farming community that shares knowledge and grows together.'
+        'Multi-language interface supporting regional languages for accessibility across India.'
     }
   ];
 
   protected readonly team: TeamMember[] = [
     {
-      name: 'Dr. Rajesh Kumar',
-      role: 'Chief Technology Officer',
-      expertise: 'Agricultural AI & Machine Learning',
-      experience: '15+ years'
+      name: 'Shlok Doshi',
+      role: 'Full Stack',
+      expertise: 'Angular & Machine Learning Integration',
+      experience: 'Hackathon Project',
+      icon: 'DEV'
     },
     {
-      name: 'Priya Sharma',
-      role: 'Head of Agriculture',
-      expertise: 'Crop Science & Agronomy',
-      experience: '12+ years'
+      name: 'Samar Kamat',
+      role: 'Machine Learning',
+      expertise: 'XGBoost & Agricultural Data Analysis',
+      experience: 'Hackathon Project',
+      icon: 'DS'
     },
     {
-      name: 'Amit Patel',
-      role: 'Data Science Lead',
-      expertise: 'Predictive Analytics & IoT',
-      experience: '10+ years'
+      name: 'Aranck Jomraj & Moksh Jain',
+      role: 'Backend',
+      expertise: 'Weather APIs & Data Processing',
+      experience: 'Hackathon Project',
+      icon: 'BE'
     },
     {
-      name: 'Dr. Sunita Verma',
-      role: 'Research Director',
-      expertise: 'Soil Science & Climate',
-      experience: '18+ years'
+      name: 'Kartika Dhonde & Sharon David',
+      role: 'Frontend Developer',
+      expertise: 'Regional Language Support & Accessibility',
+      experience: 'Hackathon Project',
+      icon: 'UI'
     }
   ];
 
   protected readonly achievements: Achievement[] = [
-    { number: '10,000+', label: 'Farmers Served' },
-    { number: '94%', label: 'Prediction Accuracy' },
-    { number: '47', label: 'Crop Types Analyzed' },
-    { number: '15', label: 'States Covered' }
+    { number: '54', label: 'Crop Types Supported' },
+    { number: '30', label: 'States Covered' },
+    { number: '6', label: 'Seasons Analyzed' },
+    { number: '10%+', label: 'Productivity Increase Target' }
   ];
 
 }
