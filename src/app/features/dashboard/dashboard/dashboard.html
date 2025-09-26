@@ -6,20 +6,7 @@
   </section>
 
   <!-- Stats -->
-  <section class="stats">
-    <div *ngFor="let stat of stats" class="stat-card">
-      <div class="stat-card__body">
-        <div>
-          <p class="stat-card__label">{{ stat.title }}</p>
-          <p class="stat-card__value">{{ stat.value }}</p>
-          <div class="stat-card__delta">
-            <span class="delta-badge">{{ stat.change }}</span>
-          </div>
-        </div>
-        <div class="stat-card__icon" [ngClass]="stat.color">{{ stat.icon }}</div>
-      </div>
-    </div>
-  </section>
+ 
 
   <!-- Main Content -->
   <section class="main-panels">
