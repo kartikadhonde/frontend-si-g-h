@@ -93,4 +93,24 @@ export class About {
     { number: '10%+', label: 'Productivity Increase Target' }
   ];
 
+  protected getKeyFeature(title: string): string {
+    switch (title) {
+      case 'Machine Learning': return 'XGBoost Regression';
+      case 'Data Processing': return 'Target Encoding';
+      case 'Real-time Integration': return 'Weather APIs';
+      case 'Regional Support': return 'Multi-language UI';
+      default: return 'Advanced Technology';
+    }
+  }
+
+  protected getAchievementDescription(label: string): string {
+    switch (label) {
+      case 'Crop Types Supported': return 'Comprehensive agricultural coverage';
+      case 'States Covered': return 'Pan-India agricultural intelligence';
+      case 'Seasons Analyzed': return 'Year-round farming insights';
+      case 'Productivity Increase Target': return 'Measurable impact goal';
+      default: return 'Performance metric';
+    }
+  }
+
 }

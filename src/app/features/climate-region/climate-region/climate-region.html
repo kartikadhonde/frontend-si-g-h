@@ -1,7 +1,6 @@
 <div class="page stack-xl">
 	<!-- Header -->
 	<div class="text-center stack-md">
-		<span class="badge badge-secondary">Regional Intelligence</span>
 		<h1 class="heading-xl">Climate & <span class="gradient-hero">Region Specific</span> Recommendations</h1>
 		<p class="lead">Get tailored farming advice based on your state's unique climate, soil conditions, and agricultural patterns</p>
 	</div>
@@ -10,7 +9,7 @@
 	<div class="card-elegant">
 		<div class="card-padding divider-bottom">
 			<h2 class="heading-section">Select Your State</h2>
-			<p class="text-small text-muted">Choose your state to get region-specific farming recommendations</p>
+			<p class="text-small text-muted">Choose your state to get region-specific farming recommendations and climate insights</p>
 		</div>
 		<div class="card-padding">
 			<select class="select" [(ngModel)]="selectedStateValue" (ngModelChange)="selectedState.set(selectedStateValue)">
@@ -45,6 +44,12 @@
 							<p class="text-muted">Kharif: {{ data.seasons.kharif }}<br />Rabi: {{ data.seasons.rabi }}</p>
 						</div>
 					</div>
+					<div class="divider"></div>
+					<div class="stack-sm">
+						<div class="text-small text-muted">Agricultural Suitability</div>
+						<div class="text-large font-semibold text-secondary">High</div>
+						<div class="text-meta">Favorable conditions for diverse crop cultivation</div>
+					</div>
 				</div>
 			</div>
 			<div class="card-elegant">
@@ -64,6 +69,12 @@
 							<span *ngFor="let soil of data.soilTypes" class="badge">{{ soil }}</span>
 						</div>
 					</div>
+					<div class="divider"></div>
+					<div class="stack-sm">
+						<div class="text-small text-muted">Primary Agricultural Focus</div>
+						<div class="text-large font-semibold text-secondary">Food Grains & Cash Crops</div>
+						<div class="text-meta">Balanced production of staple and commercial crops</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -75,7 +86,7 @@
 				<div class="card-elegant">
 					<div class="card-padding divider-bottom">
 						<h3 class="heading-section">Recommended Crops for {{ data.name }}</h3>
-						<p class="text-small text-muted">Optimal crop choices based on local climate and soil conditions</p>
+						<p class="text-small text-muted">Optimal crop choices based on local climate, soil conditions, and market demand</p>
 					</div>
 					<div class="card-padding stack-md">
 						<div *ngFor="let crop of cropRecommendations[selectedState()]" class="card rounded-md">

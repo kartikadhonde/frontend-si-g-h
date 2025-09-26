@@ -1,20 +1,19 @@
 <div class="page weather-page stack-xl">
 	<header class="text-center stack-md">
-		<span class="badge badge-secondary text-meta">Weather Intelligence</span>
 		<h1 class="heading-xl">Regional <span class="gradient-hero">Weather</span> & Soil Data Hub</h1>
 		<p class="lead">Real-time weather conditions and soil data to optimize your farming decisions</p>
 	</header>
 
-	<section class="card card-padding stack-md">
-		<div class="row-responsive">
-			<div class="select-wrap">
-				<select [ngModel]="selectedState()" (ngModelChange)="selectedState.set($event); onStateChange();" class="select">
-					<option *ngFor="let s of states" [value]="s">{{ s }}</option>
-				</select>
+		<section class="card card-padding stack-md">
+			<div class="row-responsive">
+				<div class="select-wrap">
+					<select [ngModel]="selectedState()" (ngModelChange)="selectedState.set($event); onStateChange();" class="select">
+						<option *ngFor="let s of states" [value]="s">{{ s }}</option>
+					</select>
+				</div>
+				<div class="text-small text-muted">Choose your state for localized weather data and agricultural insights</div>
 			</div>
-			<div class="text-small text-muted">Choose your state for localized weather data</div>
-		</div>
-	</section>
+		</section>
 
 	<div *ngIf="isLoading()" class="text-center text-small text-muted" style="padding:3rem 0;">Loading weather data...</div>
 
@@ -57,13 +56,19 @@
 					<div class="row-between"><span class="text-muted">Sunset</span><span class="font-medium">{{ data.current.sunset }}</span></div>
 					<div class="row-between"><span class="text-muted">UV Index</span><span class="badge" [class.badge-secondary]="data.current.uvIndex<=7" [class.badge-primary]="data.current.uvIndex>7">{{ data.current.uvIndex }}</span></div>
 				</div>
+				<div class="divider"></div>
+				<div class="stack-sm">
+					<div class="text-small text-muted">Daylight Duration</div>
+					<div class="text-large font-semibold text-secondary">12h 30m</div>
+					<div class="text-meta">Optimal for crop growth</div>
+				</div>
 			</aside>
 		</section>
 
 		<section class="card card-padding stack-md">
 			<div class="stack-sm">
 				<div class="text-large font-semibold">5-Day Forecast</div>
-				<p class="text-small text-muted">Weather predictions for farming planning</p>
+				<p class="text-small text-muted">Weather predictions for farming planning and crop management decisions</p>
 			</div>
 			<div class="grid-auto-tight forecast">
 				<div *ngFor="let day of data.forecast" class="forecast-card hover-lift">
@@ -80,7 +85,7 @@
 			<article class="card card-padding stack-md">
 				<div class="stack-sm">
 					<div class="text-large font-semibold">Soil Data</div>
-					<p class="text-small text-muted">Current soil conditions for optimal farming</p>
+					<p class="text-small text-muted">Current soil conditions and nutrient levels for optimal farming decisions</p>
 				</div>
 				<div class="grid-two text-small">
 					<div class="stack-sm"><div class="text-muted">Temperature</div><div class="text-large font-semibold">{{ data.soil.temperature }}°C</div></div>
@@ -99,7 +104,7 @@
 			<article class="card card-padding stack-md">
 				<div class="stack-sm">
 					<div class="text-large font-semibold">Agricultural Insights</div>
-					<p class="text-small text-muted">AI-powered farming recommendations</p>
+					<p class="text-small text-muted">AI-powered farming recommendations and crop management guidance</p>
 				</div>
 				<div class="stack-sm text-small">
 					<div class="row-between"><span class="text-muted">Crop Stage</span><span class="badge badge-secondary">{{ data.agriculture.cropStage }}</span></div>

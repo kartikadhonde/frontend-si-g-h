@@ -1,7 +1,6 @@
 <div class="page stack-xl">
 	<!-- Hero Section -->
 	<div class="text-center stack-md">
-		<span class="badge badge-secondary">SIH Hackathon 2025</span>
 		<h1 class="heading-xl">
 			AI-Powered Crop Yield
 			<span class="gradient-hero bg-clip-text text-transparent"> Prediction & Optimization</span>
@@ -15,7 +14,7 @@
 
 	<!-- Mission & Vision -->
 	<div class="grid-two">
-		<div class="card-elegant">
+		<div class="card-elegant hover-lift">
 			<div class="card__header">
 				<h2 class="row-sm">
 					<span class="text-secondary">Mission</span>
@@ -27,9 +26,15 @@
 					productivity by at least 10% through data-driven insights, with an interface 
 					supporting regional languages for accessibility across India.
 				</p>
+				<div class="divider"></div>
+				<div class="stack-sm">
+					<div class="text-small text-muted">Target Impact</div>
+					<div class="text-large font-semibold text-secondary">10%+ Productivity Increase</div>
+					<div class="text-meta">For small-scale farmers across India</div>
+				</div>
 			</div>
 		</div>
-		<div class="card-elegant">
+		<div class="card-elegant hover-lift">
 			<div class="card__header">
 				<h2 class="row-sm">
 					<span class="text-primary">Vision</span>
@@ -41,6 +46,12 @@
 					predictions and optimization recommendations tailored to specific crops and regional 
 					conditions, ensuring sustainable and profitable farming practices.
 				</p>
+				<div class="divider"></div>
+				<div class="stack-sm">
+					<div class="text-small text-muted">Geographic Coverage</div>
+					<div class="text-large font-semibold text-secondary">30 States</div>
+					<div class="text-meta">Comprehensive agricultural intelligence</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -56,12 +67,12 @@
 			<div *ngFor="let member of team" class="card-elegant hover-lift">
 				<div class="card__body text-center">
 					<div class="bg-gradient-hero" style="width:64px;height:64px;border-radius:999px;margin:0 auto var(--space-4);display:flex;align-items:center;justify-content:center;">
-						<span>{{ member.icon }}</span>
+						<span class="text-white font-semibold">{{ member.icon.charAt(0) }}</span>
 					</div>
 					<h3 style="font-weight:600; margin-bottom: var(--space-1)">{{ member.name }}</h3>
 					<p class="text-small text-secondary" style="font-weight:500; margin-bottom: var(--space-2)">{{ member.role }}</p>
 					<p class="text-meta text-muted" style="margin-bottom: var(--space-2)">{{ member.expertise }}</p>
-					<span class="badge">{{ member.experience }}</span>
+					<span class="badge badge-secondary">{{ member.experience }}</span>
 				</div>
 			</div>
 		</div>
@@ -78,10 +89,15 @@
 			<div *ngFor="let value of values" class="card-elegant text-center hover-lift">
 				<div class="card__body">
 					<div class="tech-icon" style="display:inline-flex; margin-bottom: var(--space-4)">
-						<span class="text-secondary">{{ value.icon }}</span>
+						<span class="text-secondary font-semibold">{{ value.icon }}</span>
 					</div>
 					<h3 class="" style="font-weight:600; margin-bottom: var(--space-2)">{{ value.title }}</h3>
-						<p class="text-small text-muted">{{ value.description }}</p>
+					<p class="text-small text-muted" style="margin-bottom: var(--space-3)">{{ value.description }}</p>
+					<div class="divider"></div>
+					<div class="stack-sm">
+						<div class="text-meta text-muted">Key Feature</div>
+						<div class="text-small font-medium text-secondary">{{ getKeyFeature(value.title) }}</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -94,10 +110,12 @@
 			<p class="text-muted">Key metrics from our XGBoost-based prediction system</p>
 		</div>
 		<div class="grid-four">
-			<div *ngFor="let a of achievements" class="card-hero text-center">
+			<div *ngFor="let a of achievements" class="card-hero text-center hover-lift">
 				<div class="card__body">
 					<div class="heading-lg text-secondary" style="margin-bottom: var(--space-2)">{{ a.number }}</div>
-					<p class="text-small text-muted">{{ a.label }}</p>
+					<p class="text-small text-muted" style="margin-bottom: var(--space-2)">{{ a.label }}</p>
+					<div class="divider"></div>
+					<div class="text-meta text-muted">{{ getAchievementDescription(a.label) }}</div>
 				</div>
 			</div>
 		</div>
@@ -107,7 +125,7 @@
 	
 
 	<!-- Project Overview -->
-	<div class="card-elegant">
+	<div class="card-elegant hover-lift">
 		<div class="card__header">
 			<h2 class="row-sm">
 				<span class="text-secondary">Project Overview</span>
@@ -135,6 +153,17 @@
 				on small-scale farmers, we aim to increase agricultural productivity by at least 10% through 
 				intelligent, data-driven farming practices.
 			</p>
+			<div class="divider"></div>
+			<div class="grid-two">
+				<div class="stack-sm">
+					<div class="text-small text-muted">Hackathon Theme</div>
+					<div class="text-large font-semibold text-secondary">Agriculture, FoodTech & Rural Development</div>
+				</div>
+				<div class="stack-sm">
+					<div class="text-small text-muted">Model Architecture</div>
+					<div class="text-large font-semibold text-secondary">XGBoost with 2000 Estimators</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
