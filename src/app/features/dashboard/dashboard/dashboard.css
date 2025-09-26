@@ -49,9 +49,15 @@
 .insight { padding: var(--space-3); border-radius: var(--radius-md); font-size: var(--text-sm); border:1px solid transparent; }
 .insight__title { font-weight:600; color: var(--color-foreground); margin-bottom:2px; }
 .insight__desc { font-size: var(--text-xs); color: var(--color-muted); }
-.insight-weather { background: linear-gradient(90deg, rgba(16,185,129,0.18), rgba(37,99,235,0.18)); border-color: rgba(16,185,129,0.3); }
-.insight-health { background: rgba(36,59,83,0.6); }
-.insight-market { background: linear-gradient(90deg, rgba(37,99,235,0.18), rgba(16,185,129,0.18)); border-color: rgba(37,99,235,0.3); }
+.insight-weather,
+.insight-health,
+.insight-market { background: var(--color-secondary); color: var(--color-secondary-foreground); border-color: var(--color-secondary); }
+.insight-weather .insight__desc,
+.insight-health .insight__desc,
+.insight-market .insight__desc { color: var(--color-secondary-foreground); opacity: 0.95; }
+.insight-weather .insight__title,
+.insight-health .insight__title,
+.insight-market .insight__title { color: var(--color-secondary-foreground); }
 
 /* Badges reuse */
 .badge-secondary { font-size: var(--text-xs); padding: 2px 8px; }

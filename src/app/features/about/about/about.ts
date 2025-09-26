@@ -61,28 +61,28 @@ export class About {
       role: 'Full Stack',
       expertise: 'Angular & Machine Learning Integration',
       experience: 'Hackathon Project',
-      icon: 'DEV'
+      icon: 'Development'
     },
     {
       name: 'Samar Kamat',
       role: 'Machine Learning',
       expertise: 'XGBoost & Agricultural Data Analysis',
       experience: 'Hackathon Project',
-      icon: 'DS'
+      icon: 'Machine Learning'
     },
     {
       name: 'Aranck Jomraj & Moksh Jain',
       role: 'Backend',
       expertise: 'Weather APIs & Data Processing',
       experience: 'Hackathon Project',
-      icon: 'BE'
+      icon: 'Backend, System Integration'
     },
     {
       name: 'Kartika Dhonde & Sharon David',
       role: 'Frontend Developer',
       expertise: 'Regional Language Support & Accessibility',
       experience: 'Hackathon Project',
-      icon: 'UI'
+      icon: 'UI/UX Design'
     }
   ];
 
