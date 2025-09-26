@@ -69,29 +69,6 @@
 		</div>
 
 		<!-- Alerts -->
-		<div *ngIf="climateAlerts[selectedState()]" class="card-elegant">
-			<div class="card-padding divider-bottom">
-				<h3 class="heading-section">⚠️ Current Alerts & Updates</h3>
-				<p class="text-small text-muted">Important climate and agricultural updates for your region</p>
-			</div>
-			<div class="card-padding stack-md">
-				<div *ngFor="let alert of climateAlerts[selectedState()]" class="alert-row" [ngClass]="alertContainer(alert.type, alert.severity)">
-					<div>🔔</div>
-					<div class="stack-sm">
-						<div class="alert-head">
-							<h4 class="label">{{ alert.title }}</h4>
-							<span class="badge" [ngClass]="{
-								'badge-danger': alert.severity === 'High',
-								'badge-warning': alert.severity === 'Medium',
-								'badge-info': alert.severity === 'Low'
-							}">{{ alert.severity }}</span>
-						</div>
-						<p class="text-small text-muted">{{ alert.description }}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<!-- Tabs simplified -->
 		<div class="stack-lg">
 			<div class="stack-lg">
@@ -199,18 +176,7 @@
 			</div>
 
 			<!-- Action Cards -->
-			<div class="grid-two">
-				<div class="card-elegant card-padding text-center">
-					<h3 class="heading-section" style="font-size: var(--text-xl)">Get Personalized Recommendations</h3>
-					<p class="text-small text-muted" style="margin-bottom: var(--space-2)">Use our AI tool to get specific recommendations for your farm</p>
-					<button class="btn btn-secondary" style="width:100%">Start Yield Prediction</button>
-				</div>
-				<div class="card-elegant card-padding text-center">
-					<h3 class="heading-section" style="font-size: var(--text-xl)">Connect with Local Experts</h3>
-					<p class="text-small text-muted" style="margin-bottom: var(--space-2)">Get advice from agricultural experts in your region</p>
-					<button class="btn btn-outline" style="width:100%">Find Experts</button>
-				</div>
-			</div>
+			
 		</div>
 	</ng-container>
 </div>

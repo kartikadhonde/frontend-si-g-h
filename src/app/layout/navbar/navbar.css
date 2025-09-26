@@ -4,7 +4,7 @@
 }
 .navbar { position: sticky; top:0; z-index: 50; background: var(--color-bg); border-bottom:1px solid var(--color-border); }
 .navbar__inner { max-width: 1280px; margin:0 auto; padding: var(--space-3) var(--space-4); display:flex; align-items:center; justify-content:space-between; gap: var(--space-4); }
-.brand { font-weight:700; text-decoration:none; color: var(--color-foreground); }
+.brand { font-weight:700; text-decoration:none; color: var(--color-secondary); }
 .nav-links { list-style:none; display:flex; gap: var(--space-4); margin:0; padding:0; }
 .nav-links a { color: var(--color-muted-alt); text-decoration:none; font-size: var(--text-sm); }
-.nav-links a:hover, .nav-links a.active { color: var(--color-foreground); }
+.nav-links a:hover, .nav-links a.active { color: var(--color-secondary); }
