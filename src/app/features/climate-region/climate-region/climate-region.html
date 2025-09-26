@@ -9,7 +9,7 @@
 	<!-- State Selection -->
 	<div class="card-elegant">
 		<div class="card-padding divider-bottom">
-			<h2 class="heading-section">📍 Select Your State</h2>
+			<h2 class="heading-section">Select Your State</h2>
 			<p class="text-small text-muted">Choose your state to get region-specific farming recommendations</p>
 		</div>
 		<div class="card-padding">
@@ -24,7 +24,7 @@
 		<div class="grid-two">
 			<div class="card-hero">
 				<div class="card-padding divider-bottom">
-					<h3 class="heading-section">🌡️ {{ data.name }} Climate Profile</h3>
+					<h3 class="heading-section">{{ data.name }} Climate Profile</h3>
 				</div>
 				<div class="card-padding stack-md">
 					<div class="grid-two text-small">
@@ -74,7 +74,7 @@
 			<div class="stack-lg">
 				<div class="card-elegant">
 					<div class="card-padding divider-bottom">
-						<h3 class="heading-section">🌱 Recommended Crops for {{ data.name }}</h3>
+						<h3 class="heading-section">Recommended Crops for {{ data.name }}</h3>
 						<p class="text-small text-muted">Optimal crop choices based on local climate and soil conditions</p>
 					</div>
 					<div class="card-padding stack-md">
@@ -112,11 +112,11 @@
 				</div>
 				<div class="card-elegant">
 					<div class="card-padding divider-bottom">
-						<h3 class="heading-section">🚧 Agricultural Challenges in {{ data.name }}</h3>
+						<h3 class="heading-section">Agricultural Challenges in {{ data.name }}</h3>
 					</div>
 					<div class="card-padding stack-md text-small">
 						<div *ngFor="let challenge of data.challenges" class="challenge-row">
-							<div>⚠️</div>
+							<div class="text-small text-muted">Challenge</div>
 							<div class="stack-sm">
 								<h4 class="label">{{ challenge }}</h4>
 								<div class="text-muted">
@@ -157,11 +157,11 @@
 				</div>
 				<div class="card-elegant">
 					<div class="card-padding divider-bottom">
-						<h3 class="heading-section">✅ Agricultural Opportunities in {{ data.name }}</h3>
+						<h3 class="heading-section">Agricultural Opportunities in {{ data.name }}</h3>
 					</div>
 					<div class="card-padding stack-md text-small">
 						<div *ngFor="let op of data.opportunities" class="op-row">
-							<div>🌟</div>
+							<div class="text-small text-muted">Opportunity</div>
 							<div class="stack-sm">
 								<h4 class="label">{{ op }}</h4>
 								<p class="text-muted" *ngIf="op === 'Good irrigation'">Take advantage of established irrigation infrastructure to grow water-intensive but profitable crops.</p>

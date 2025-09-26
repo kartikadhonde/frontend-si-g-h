@@ -29,23 +29,23 @@
 							<div class="text-small text-muted">Feels like {{ data.current.temperature + 2 }}°C</div>
 						</div>
 					</div>
-					<div [class]="conditionColor(data.current.condition)" class="icon-xl">☁️</div>
+					<div [class]="conditionColor(data.current.condition)" class="icon-xl"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></div>
 				</div>
 				<div class="grid-four metrics">
 					<div class="metric">
-						<span>💧</span>
+						<span class="text-small text-muted">Humidity</span>
 						<div class="text-small"><div class="font-medium">{{ data.current.humidity }}%</div><div class="text-meta text-muted">Humidity</div></div>
 					</div>
 					<div class="metric">
-						<span>🌬️</span>
+						<span class="text-small text-muted">Wind</span>
 						<div class="text-small"><div class="font-medium">{{ data.current.windSpeed }} km/h</div><div class="text-meta text-muted">Wind Speed</div></div>
 					</div>
 					<div class="metric">
-						<span>🧭</span>
+						<span class="text-small text-muted">Pressure</span>
 						<div class="text-small"><div class="font-medium">{{ data.current.pressure }} mb</div><div class="text-meta text-muted">Pressure</div></div>
 					</div>
 					<div class="metric">
-						<span>👁️</span>
+						<span class="text-small text-muted">Visibility</span>
 						<div class="text-small"><div class="font-medium">{{ data.current.visibility }} km</div><div class="text-meta text-muted">Visibility</div></div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 			<div class="grid-auto-tight forecast">
 				<div *ngFor="let day of data.forecast" class="forecast-card hover-lift">
 					<div class="font-medium mb-2">{{ day.day }}</div>
-					<div class="mb-2" [class]="conditionColor(day.condition)">☁️</div>
+					<div class="mb-2" [class]="conditionColor(day.condition)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></div>
 					<div class="text-small text-muted mb-1">{{ day.condition }}</div>
 					<div class="font-medium"><span>{{ day.high }}°</span><span class="text-muted"> / {{ day.low }}°</span></div>
 					<div class="text-meta text-info mt-1">{{ day.precipitation }}% rain</div>
