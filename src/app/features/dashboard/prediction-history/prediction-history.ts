@@ -10,6 +10,7 @@ export interface PredictionRecord {
   // Optional raw numeric value and unit extracted from backend response
   predictedYieldValue?: number;
   predictedYieldUnit?: string;
+  recommendations?: string[];
 }
 
 @Component({

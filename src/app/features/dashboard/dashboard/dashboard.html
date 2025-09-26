@@ -22,8 +22,11 @@
         <div class="panel__content latest-prediction__content">
           <div class="latest-prediction__summary">
             <div class="latest-prediction__value">
-              {{ latestPrediction()?.predictedYieldValue | number:'1.2-2' }} {{ unitLabel(latestPrediction()?.predictedYieldUnit) }}
+              {{ latestPrediction()?.predictedYieldValue | number:'1.3-3' }} {{ unitLabel(latestPrediction()?.predictedYieldUnit) }}
             </div>
+            <ul *ngIf="latestPrediction()?.recommendations?.length" class="latest-prediction__recs">
+              <li *ngFor="let r of latestPrediction()?.recommendations">{{ r }}</li>
+            </ul>
             <span [class]="confidenceBadge(latestPrediction()?.confidence)">{{ latestPrediction()?.confidence }} Confidence</span>
           </div>
           <div class="latest-prediction__meta">

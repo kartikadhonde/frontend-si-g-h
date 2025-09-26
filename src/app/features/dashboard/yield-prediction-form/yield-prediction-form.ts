@@ -12,6 +12,7 @@ interface YieldPredictionResult {
   createdAt: Date;
   predictedYieldValue?: number;
   predictedYieldUnit?: string;
+  recommendations?: string[];
 }
 
 @Component({
@@ -78,7 +79,8 @@ export class YieldPredictionFormComponent {
           console.debug('[Predict] response', res);
           const y = (res.predicted_yield ?? res.yield ?? res.Yield) as number | string | undefined;
           const yieldNum = typeof y === 'string' ? parseFloat(y) : y;
-          const yieldStr = typeof yieldNum === 'number' && !Number.isNaN(yieldNum) ? yieldNum.toFixed(2) : (y ?? '');
+          const yieldStr = typeof yieldNum === 'number' && !Number.isNaN(yieldNum) ? yieldNum.toFixed(3) : (y ?? '');
+          const recs = Array.isArray((res as any).recommendations) ? (res as any).recommendations.filter((x: any) => typeof x === 'string') : undefined;
           const result: YieldPredictionResult = {
             predictedYield: yieldStr ? `${yieldStr} tons/ha` : '—',
             confidence: String(res.confidence ?? 'High'),
@@ -86,7 +88,8 @@ export class YieldPredictionFormComponent {
             farmLocation: payload.State,
             createdAt: new Date(),
             predictedYieldValue: typeof yieldNum === 'number' && !Number.isNaN(yieldNum) ? yieldNum : undefined,
-            predictedYieldUnit: typeof (res as any).unit === 'string' ? (res as any).unit as string : undefined
+            predictedYieldUnit: typeof (res as any).unit === 'string' ? (res as any).unit as string : undefined,
+            recommendations: recs
           };
           this.predictionGenerated.emit(result);
         },
