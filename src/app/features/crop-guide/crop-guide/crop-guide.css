@@ -1,0 +1,26 @@
+/* Crop Guide scoped styles (semantic) */
+.filters { display:flex; flex-direction:column; gap: var(--space-4); align-items:stretch; }
+@media (min-width:768px){ .filters { flex-direction:row; align-items:center; } }
+.input-with-icon { position:relative; flex:1; max-width: 480px; }
+.input-with-icon .input { padding-left: calc(var(--space-4) + 16px); }
+.input-icon { position:absolute; left: var(--space-2); top:50%; transform: translateY(-50%); font-size: var(--text-xs); color: var(--color-muted); }
+.categories { display:flex; flex-wrap:wrap; gap: var(--space-2); }
+
+.crop-card { overflow:hidden; }
+.crop-thumb { height: 128px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(37,99,235,0.15)); position:relative; }
+.crop-emoji { font-size: 3.5rem; opacity:.9; transition: transform var(--transition); }
+.crop-card:hover .crop-emoji { transform: scale(1.08); }
+.chip-floating { position:absolute; right: var(--space-2); top: var(--space-2); background: rgba(0,0,0,0.3); backdrop-filter: blur(6px); border:1px solid var(--color-border); padding: 2px var(--space-2); border-radius: var(--radius-md); }
+
+.title { font-size: var(--text-xl); font-weight:700; }
+.grid-compact { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-3); }
+.stat-box { text-align:center; padding: var(--space-2); background: rgba(16,185,129,0.12); border-radius: var(--radius-lg); }
+.stat-value { font-size: var(--text-xs); font-weight:600; }
+
+details { border-top:1px solid var(--color-border); padding-top: var(--space-2); }
+.summary-toggle { cursor:pointer; font-size: var(--text-sm); font-weight:600; color: var(--color-secondary); }
+.summary-toggle:hover { color: var(--color-primary); }
+.details-content { margin-top: var(--space-2); }
+.fertilization-box { background: rgba(37,99,235,0.12); border:1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-2); font-size: var(--text-xs); display:flex; flex-direction:column; gap: 2px; }
+
+.empty { padding: var(--space-12) 0; display:flex; flex-direction:column; align-items:center; gap: var(--space-4); }

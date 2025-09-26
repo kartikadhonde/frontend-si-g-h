@@ -1,0 +1,10 @@
+<article class="card card-padding" [class.card-elevated]="elevated">
+	<header *ngIf="title || subtitle" class="stack-sm card__header">
+		<h3 class="card__title" *ngIf="title">{{ title }}</h3>
+		<p class="card__subtitle text-small text-muted" *ngIf="subtitle">{{ subtitle }}</p>
+	</header>
+	<div class="card__body">
+		<ng-content />
+	</div>
+	<footer *ngIf="footer" class="card__footer text-small text-muted">{{ footer }}</footer>
+</article>

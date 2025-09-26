@@ -1,0 +1,128 @@
+<div class="page weather-page stack-xl">
+	<header class="text-center stack-md">
+		<span class="badge badge-secondary text-meta">Weather Intelligence</span>
+		<h1 class="heading-xl">Regional <span class="gradient-hero">Weather</span> & Soil Data Hub</h1>
+		<p class="lead">Real-time weather conditions and soil data to optimize your farming decisions</p>
+	</header>
+
+	<section class="card card-padding stack-md">
+		<div class="row-responsive">
+			<div class="select-wrap">
+				<select [ngModel]="selectedState()" (ngModelChange)="selectedState.set($event); onStateChange();" class="select">
+					<option *ngFor="let s of states" [value]="s">{{ s }}</option>
+				</select>
+			</div>
+			<div class="text-small text-muted">Choose your state for localized weather data</div>
+		</div>
+	</section>
+
+	<div *ngIf="isLoading()" class="text-center text-small text-muted" style="padding:3rem 0;">Loading weather data...</div>
+
+	<ng-container *ngIf="weatherData() as data">
+		<section class="grid-main-aside">
+			<article class="card-hero card-padding stack-lg">
+				<div class="row-between">
+					<div class="row gap-4">
+						<div class="temp">{{ data.current.temperature }}°C</div>
+						<div>
+							<div class="text-large">{{ data.current.condition }}</div>
+							<div class="text-small text-muted">Feels like {{ data.current.temperature + 2 }}°C</div>
+						</div>
+					</div>
+					<div [class]="conditionColor(data.current.condition)" class="icon-xl">☁️</div>
+				</div>
+				<div class="grid-four metrics">
+					<div class="metric">
+						<span>💧</span>
+						<div class="text-small"><div class="font-medium">{{ data.current.humidity }}%</div><div class="text-meta text-muted">Humidity</div></div>
+					</div>
+					<div class="metric">
+						<span>🌬️</span>
+						<div class="text-small"><div class="font-medium">{{ data.current.windSpeed }} km/h</div><div class="text-meta text-muted">Wind Speed</div></div>
+					</div>
+					<div class="metric">
+						<span>🧭</span>
+						<div class="text-small"><div class="font-medium">{{ data.current.pressure }} mb</div><div class="text-meta text-muted">Pressure</div></div>
+					</div>
+					<div class="metric">
+						<span>👁️</span>
+						<div class="text-small"><div class="font-medium">{{ data.current.visibility }} km</div><div class="text-meta text-muted">Visibility</div></div>
+					</div>
+				</div>
+			</article>
+			<aside class="card card-padding stack-md">
+				<div class="text-large font-semibold">Sun & Moon</div>
+				<div class="stack-sm text-small">
+					<div class="row-between"><span class="text-muted">Sunrise</span><span class="font-medium">{{ data.current.sunrise }}</span></div>
+					<div class="row-between"><span class="text-muted">Sunset</span><span class="font-medium">{{ data.current.sunset }}</span></div>
+					<div class="row-between"><span class="text-muted">UV Index</span><span class="badge" [class.badge-secondary]="data.current.uvIndex<=7" [class.badge-primary]="data.current.uvIndex>7">{{ data.current.uvIndex }}</span></div>
+				</div>
+			</aside>
+		</section>
+
+		<section class="card card-padding stack-md">
+			<div class="stack-sm">
+				<div class="text-large font-semibold">5-Day Forecast</div>
+				<p class="text-small text-muted">Weather predictions for farming planning</p>
+			</div>
+			<div class="grid-auto-tight forecast">
+				<div *ngFor="let day of data.forecast" class="forecast-card hover-lift">
+					<div class="font-medium mb-2">{{ day.day }}</div>
+					<div class="mb-2" [class]="conditionColor(day.condition)">☁️</div>
+					<div class="text-small text-muted mb-1">{{ day.condition }}</div>
+					<div class="font-medium"><span>{{ day.high }}°</span><span class="text-muted"> / {{ day.low }}°</span></div>
+					<div class="text-meta text-info mt-1">{{ day.precipitation }}% rain</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="grid-two">
+			<article class="card card-padding stack-md">
+				<div class="stack-sm">
+					<div class="text-large font-semibold">Soil Data</div>
+					<p class="text-small text-muted">Current soil conditions for optimal farming</p>
+				</div>
+				<div class="grid-two text-small">
+					<div class="stack-sm"><div class="text-muted">Temperature</div><div class="text-large font-semibold">{{ data.soil.temperature }}°C</div></div>
+					<div class="stack-sm"><div class="text-muted">Moisture</div><div [class]="soilHealthColor(data.soil.moisture,'moisture')+' text-large font-semibold'">{{ data.soil.moisture }}%</div></div>
+					<div class="stack-sm"><div class="text-muted">pH Level</div><div [class]="soilHealthColor(data.soil.ph,'ph')+' text-large font-semibold'">{{ data.soil.ph }}</div></div>
+					<div class="stack-sm"><div class="text-muted">Nitrogen</div><div class="text-large font-semibold text-secondary">{{ data.soil.nitrogen }} ppm</div></div>
+				</div>
+				<div class="divider"></div>
+				<div class="text-small stack-sm">
+					<div class="text-muted">NPK Levels</div>
+					<div class="row-between"><span>Nitrogen (N)</span><span class="font-medium">{{ data.soil.nitrogen }} ppm</span></div>
+					<div class="row-between"><span>Phosphorus (P)</span><span class="font-medium">{{ data.soil.phosphorus }} ppm</span></div>
+					<div class="row-between"><span>Potassium (K)</span><span class="font-medium">{{ data.soil.potassium }} ppm</span></div>
+				</div>
+			</article>
+			<article class="card card-padding stack-md">
+				<div class="stack-sm">
+					<div class="text-large font-semibold">Agricultural Insights</div>
+					<p class="text-small text-muted">AI-powered farming recommendations</p>
+				</div>
+				<div class="stack-sm text-small">
+					<div class="row-between"><span class="text-muted">Crop Stage</span><span class="badge badge-secondary">{{ data.agriculture.cropStage }}</span></div>
+					<div class="row-between"><span class="text-muted">Irrigation Needed</span><span class="badge" [class.badge-primary]="data.agriculture.irrigationNeeded" [class.badge-secondary]="!data.agriculture.irrigationNeeded">{{ data.agriculture.irrigationNeeded?'Yes':'No' }}</span></div>
+					<div class="row-between"><span class="text-muted">Pest Risk</span><span class="badge" [class.badge-secondary]="data.agriculture.pestRisk==='Low'" [class.badge-soft]="data.agriculture.pestRisk==='Medium'" [class.badge-video]="data.agriculture.pestRisk==='High'">{{ data.agriculture.pestRisk }}</span></div>
+					<div class="row-between"><span class="text-muted">Disease Risk</span><span class="badge" [class.badge-secondary]="data.agriculture.diseaseRisk==='Low'" [class.badge-soft]="data.agriculture.diseaseRisk==='Medium'" [class.badge-video]="data.agriculture.diseaseRisk==='High'">{{ data.agriculture.diseaseRisk }}</span></div>
+				</div>
+				<div class="divider"></div>
+				<div>
+					<div class="text-small text-muted mb-2">Harvest Window</div>
+					<div class="text-large font-semibold text-secondary">{{ data.agriculture.harvestWindow }}</div>
+				</div>
+				<div class="divider"></div>
+				<div class="text-small stack-xs">
+					<div class="font-medium">Today's Recommendations</div>
+					<ul class="stack-xs text-muted">
+						<li>• Monitor crop for early signs of fungal disease</li>
+						<li>• Apply foliar spray if humidity remains high</li>
+						<li>• Ensure proper drainage in low-lying areas</li>
+						<li>• Check irrigation systems for tomorrow's forecast</li>
+					</ul>
+				</div>
+			</article>
+		</section>
+	</ng-container>
+</div>

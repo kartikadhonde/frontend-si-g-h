@@ -1,0 +1,15 @@
+<div class="tabs" role="tablist">
+	<button *ngFor="let t of tabs; let i = index"
+					class="tab-btn"
+					[class.tab-btn--active]="i===activeIndex"
+					(click)="select(i)"
+					role="tab"
+					[attr.aria-selected]="i===activeIndex">
+		{{ t.label }}
+	</button>
+</div>
+<div class="tab-panels">
+	<ng-container *ngFor="let t of tabs; let i = index">
+		<div class="tab-panel" *ngIf="i===activeIndex" role="tabpanel">{{ t.content }}</div>
+	</ng-container>
+</div>

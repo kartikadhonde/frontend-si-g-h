@@ -1,0 +1,70 @@
+<div class="dashboard page-shell">
+  <!-- Hero -->
+  <section class="hero-intro">
+    <h1 class="hero-title">Welcome to <span class="gradient-hero">FarmWise AI</span></h1>
+    <p class="hero-lead">Get intelligent yield predictions powered by advanced AI to optimize your farming decisions</p>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div *ngFor="let stat of stats" class="stat-card">
+      <div class="stat-card__body">
+        <div>
+          <p class="stat-card__label">{{ stat.title }}</p>
+          <p class="stat-card__value">{{ stat.value }}</p>
+          <div class="stat-card__delta">
+            <span class="delta-badge">{{ stat.change }}</span>
+          </div>
+        </div>
+        <div class="stat-card__icon" [ngClass]="stat.color">{{ stat.icon }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="main-panels">
+    <div class="primary-panel">
+      <app-yield-prediction-form (predictionGenerated)="handlePredictionResult($event)"></app-yield-prediction-form>
+    </div>
+    <div class="aside-panel">
+      <div *ngIf="latestPrediction()" class="panel latest-prediction">
+        <div class="panel__header">
+          <h3 class="panel__title">Latest Prediction</h3>
+          <p class="panel__subtitle">Your most recent yield analysis</p>
+        </div>
+        <div class="panel__content latest-prediction__content">
+          <div class="latest-prediction__summary">
+            <div class="latest-prediction__value">{{ latestPrediction()?.predictedYield }}</div>
+            <span class="badge badge-secondary latest-prediction__confidence">{{ latestPrediction()?.confidence }} Confidence</span>
+          </div>
+          <div class="latest-prediction__meta">
+            <div><span class="label">Crop:</span> <span class="value">{{ latestPrediction()?.cropType }}</span></div>
+            <div><span class="label">Location:</span> <span class="value">{{ latestPrediction()?.farmLocation }}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel smart-insights">
+        <div class="panel__header">
+          <h3 class="panel__title">Smart Insights</h3>
+          <p class="panel__subtitle">AI-powered farming recommendations</p>
+        </div>
+        <div class="panel__content insights-list">
+          <div class="insight insight-weather">
+            <div class="insight__title">Weather Alert</div>
+            <div class="insight__desc">Light rain expected in 2 days - perfect for wheat sowing</div>
+          </div>
+          <div class="insight insight-health">
+            <div class="insight__title">Crop Health Monitor</div>
+            <div class="insight__desc">All monitored fields showing healthy growth</div>
+          </div>
+            <div class="insight insight-market">
+            <div class="insight__title">Market Trends</div>
+            <div class="insight__desc">Rice prices up 12% - consider early harvest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-prediction-history [predictions]="predictions()"></app-prediction-history>
+</div>

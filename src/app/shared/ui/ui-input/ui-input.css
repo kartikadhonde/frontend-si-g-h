@@ -1,0 +1,2 @@
+/* Input component just relies on global form styles */
+:host { display:block; }

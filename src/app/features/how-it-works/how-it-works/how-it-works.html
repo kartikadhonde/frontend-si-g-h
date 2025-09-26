@@ -1,0 +1,98 @@
+<div class="page stack-xl">
+	<!-- Header -->
+	<div class="text-center stack-sm">
+		<span class="badge badge-secondary">How It Works</span>
+		<h1 class="heading-2xl">From <span class="gradient-hero bg-clip-text text-transparent">Data to Decisions</span></h1>
+		<p class="text-large text-muted small-lead">Discover how FarmWise AI transforms agricultural data into actionable insights that drive better farming outcomes</p>
+	</div>
+
+	<!-- Process Steps -->
+	<div class="stack-lg">
+		<div class="text-center">
+			<h2 class="heading-xl">Our AI-Powered Process</h2>
+			<p class="text-muted small-lead">A sophisticated four-step process that converts raw agricultural data into intelligent farming recommendations</p>
+		</div>
+		<div class="stack-lg">
+			<div *ngFor="let step of steps; let i = index" class="process">
+				<div class="process__left">
+					<div class="process__icon">
+						<span [ngClass]="'dot dot--' + step.variant">📊</span>
+					</div>
+					<div class="process__meta">
+						<div class="text-small text-muted">Step {{ step.step }}</div>
+						<div class="text-large">{{ step.title }}</div>
+					</div>
+				</div>
+				<div class="card-elegant process__card">
+					<div class="stack-sm">
+						<p class="text-muted">{{ step.description }}</p>
+						<div class="grid-two">
+							<div *ngFor="let detail of step.details" class="row-sm text-small">
+								<div class="dot" [ngClass]="'dot--' + step.variant"></div>
+								<span class="text-muted">{{ detail }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Technologies -->
+	<div class="stack-lg">
+		<div class="text-center">
+			<h2 class="heading-xl">Cutting-Edge Technologies</h2>
+			<p class="text-muted small-lead">The advanced technologies powering our agricultural intelligence platform</p>
+		</div>
+		<div class="grid-three">
+			<div *ngFor="let tech of technologies" class="card-elegant">
+				<div class="card__header">
+					<div class="row-sm">
+						<div class="tech-icon"><span>🛠️</span></div>
+						<h3 class="text-large">{{ tech.name }}</h3>
+					</div>
+					<p class="text-small text-muted">{{ tech.description }}</p>
+				</div>
+				<div class="card__body stack-xs">
+					<h4 class="text-small">Applications:</h4>
+					<ul class="stack-2xs">
+						<li *ngFor="let app of tech.applications" class="row-sm text-small text-muted">
+							<div class="dot dot--secondary"></div>
+							{{ app }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Benefits -->
+	<div class="stack-lg">
+		<div class="text-center">
+			<h2 class="heading-xl">Proven Results</h2>
+			<p class="text-muted">Real benefits experienced by farmers using FarmWise AI</p>
+		</div>
+		<div class="grid-four">
+			<div *ngFor="let benefit of benefits" class="card-hero text-center">
+				<div class="stack-xs">
+					<div class="stat text-secondary">{{ benefit.percentage }}</div>
+					<h3>{{ benefit.title }}</h3>
+					<p class="text-small text-muted">{{ benefit.description }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CTA -->
+	<div class="card-elegant">
+		<div class="text-center stack-sm pad-lg">
+			<h2 class="heading-xl">Ready to Experience AI-Powered Farming?</h2>
+			<p class="text-muted small-lead">Join thousands of farmers who are already benefiting from intelligent agricultural insights. Get started with your first yield prediction today.</p>
+			<div class="row-sm center">
+				<button class="btn btn-secondary">Start Free Trial <span>➡️</span></button>
+				<button class="btn">Watch Demo Video</button>
+			</div>
+		</div>
+	</div>
+</div>

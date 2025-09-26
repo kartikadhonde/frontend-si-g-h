@@ -1,0 +1,2 @@
+/* Badge component uses global .badge base */
+:host { display:inline-block; }

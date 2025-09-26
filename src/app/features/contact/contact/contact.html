@@ -1,0 +1,120 @@
+<div class="page stack-xl">
+	<!-- Header -->
+	<div class="text-center stack-sm">
+		<span class="badge badge-secondary">Get in Touch</span>
+		<h1 class="heading-xl">
+			Contact & <span class="gradient-hero bg-clip-text text-transparent">Support</span>
+		</h1>
+		<p class="lead">
+			Need help with your farming decisions? Our expert team is here to assist you 24/7
+		</p>
+	</div>
+
+	<!-- Contact Info -->
+	<div class="grid-four">
+		<div *ngFor="let info of contactInfo" class="card-elegant hover-lift text-center">
+			<div class="card__body">
+				<div class="tech-icon" style="display:inline-flex; margin-bottom: var(--space-4)">
+					<span class="text-secondary">📞</span>
+				</div>
+				<h3 style="font-weight:600; margin-bottom: var(--space-2)">{{ info.title }}</h3>
+				<p class="text-small text-secondary" style="font-weight:500; margin-bottom: var(--space-1)">{{ info.primary }}</p>
+				<p class="text-small text-muted" style="margin-bottom: var(--space-2)">{{ info.secondary }}</p>
+				<p class="text-meta text-muted">{{ info.description }}</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Support Channels -->
+	<div class="stack-md">
+		<div class="text-center">
+			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Quick Support Channels</h2>
+			<p class="text-muted">Get instant help through our preferred communication channels</p>
+		</div>
+		<div class="grid-three">
+			<div *ngFor="let channel of supportChannels" class="card-elegant hover-lift">
+				<div class="card__body row-sm" style="justify-content:space-between; align-items:center; display:flex;">
+					<div>
+						<h4 style="font-weight:500">{{ channel.name }}</h4>
+						<p class="text-small text-muted">{{ channel.value }}</p>
+					</div>
+					<button class="btn" [ngClass]="{
+						'btn-secondary': channel.variant === 'secondary',
+						'btn-primary': channel.variant === 'info',
+						'btn-danger': channel.variant === 'danger'
+					}">{{ channel.action }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Form & FAQ -->
+	<div class="grid-two">
+		<div class="card-elegant">
+			<div class="card__header">
+				<h2 class="row-sm">
+					<span class="text-secondary">💬</span> Send us a Message
+				</h2>
+				<p class="text-small text-muted">Fill out the form below and we'll get back to you as soon as possible</p>
+			</div>
+			<div class="card__body">
+				<form [formGroup]="form" (ngSubmit)="submit()" class="stack-sm">
+					<div class="grid-two">
+						<div class="field">
+							<label class="label">Full Name</label>
+							<input type="text" formControlName="name" placeholder="Your full name" class="input" />
+							<small class="text-danger" *ngIf="form.controls.name.touched && form.controls.name.invalid">Name is required</small>
+						</div>
+						<div class="field">
+							<label class="label">Email Address</label>
+							<input type="email" formControlName="email" placeholder="your.email@example.com" class="input" />
+							<small class="text-danger" *ngIf="form.controls.email.touched && form.controls.email.invalid">Valid email is required</small>
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Subject</label>
+						<input type="text" formControlName="subject" placeholder="What is this regarding?" class="input" />
+						<small class="text-danger" *ngIf="form.controls.subject.touched && form.controls.subject.invalid">Subject required</small>
+					</div>
+					<div class="field">
+						<label class="label">Message</label>
+						<textarea formControlName="message" placeholder="Please describe your query in detail..." class="input" style="min-height:120px"></textarea>
+						<small class="text-danger" *ngIf="form.controls.message.touched && form.controls.message.invalid">Message required</small>
+					</div>
+					<button type="submit" class="btn btn-secondary" style="width:100%" [disabled]="isLoading()">
+						<ng-container *ngIf="isLoading(); else sendLabel">⏳ Sending Message...</ng-container>
+						<ng-template #sendLabel>📨 Send Message</ng-template>
+					</button>
+				</form>
+			</div>
+		</div>
+		<div class="card-elegant">
+			<div class="card__header">
+				<h2 class="" style="font-weight:600; font-size: var(--text-lg)">Frequently Asked Questions</h2>
+				<p class="text-small text-muted">Quick answers to common queries</p>
+			</div>
+			<div class="card__body stack-sm text-small">
+				<div class="" style="border-left:2px solid var(--color-secondary); padding-left: var(--space-4)">
+					<h4 style="font-weight:500">How accurate are the yield predictions?</h4>
+					<p class="text-muted" style="margin-top: var(--space-1)">Our AI models achieve 94%+ accuracy by analyzing weather patterns, soil conditions, and historical data.</p>
+				</div>
+				<div class="" style="border-left:2px solid var(--color-primary); padding-left: var(--space-4)">
+					<h4 style="font-weight:500">Is there a mobile app available?</h4>
+					<p class="text-muted" style="margin-top: var(--space-1)">Yes, our mobile app is available on both Android and iOS platforms with offline capabilities.</p>
+				</div>
+				<div class="" style="border-left:2px solid var(--color-secondary); padding-left: var(--space-4)">
+					<h4 style="font-weight:500">What crops are supported?</h4>
+					<p class="text-muted" style="margin-top: var(--space-1)">We support 47+ crop types including cereals, pulses, oilseeds, cash crops, and vegetables.</p>
+				</div>
+				<div class="" style="border-left:2px solid var(--color-primary); padding-left: var(--space-4)">
+					<h4 style="font-weight:500">Is the service free for small farmers?</h4>
+					<p class="text-muted" style="margin-top: var(--space-1)">Basic features are free. We offer subsidized premium plans for small-scale farmers.</p>
+				</div>
+				<div class="" style="border-left:2px solid var(--color-secondary); padding-left: var(--space-4)">
+					<h4 style="font-weight:500">How do I get started?</h4>
+					<p class="text-muted" style="margin-top: var(--space-1)">Simply register on our platform, enter your farm details, and start getting predictions instantly.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

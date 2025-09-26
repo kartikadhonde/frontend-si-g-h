@@ -1,0 +1,8 @@
+/* Tabs component */
+.tabs { display:flex; gap: var(--space-2); margin-bottom: var(--space-4); }
+.tab-btn { background: var(--color-bg-alt); border:1px solid var(--color-border); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); font-size: var(--text-sm); cursor:pointer; transition: var(--transition); }
+.tab-btn:hover { background: var(--color-accent); }
+.tab-btn--active { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-primary-foreground); }
+.tab-panels { border:1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-4); background: var(--color-bg-alt); }
+.tab-panel { animation: fadeIn .25s var(--ease-standard); }
+@keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform:none; } }

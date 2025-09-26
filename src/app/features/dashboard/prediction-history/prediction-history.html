@@ -1,0 +1,16 @@
+<div class="history panel">
+  <div class="panel__header">
+    <h3 class="panel__title">Prediction History</h3>
+    <p class="panel__subtitle">Recent yield predictions</p>
+  </div>
+  <div class="history__list">
+    <div *ngFor="let p of predictions; let i = index" class="history__item">
+      <div class="history__meta">
+        <div class="history__yield">{{ p.predictedYield }}</div>
+        <div class="history__details">{{ p.cropType | titlecase }} • {{ p.farmLocation }} • {{ p.createdAt | date:'short' }}</div>
+      </div>
+      <span [class]="confidenceBadge(p.confidence)">{{ p.confidence }}</span>
+    </div>
+    <div *ngIf="!predictions.length" class="history__empty">No predictions yet</div>
+  </div>
+</div>

@@ -1,0 +1,216 @@
+<div class="page stack-xl">
+	<!-- Header -->
+	<div class="text-center stack-md">
+		<span class="badge badge-secondary">Regional Intelligence</span>
+		<h1 class="heading-xl">Climate & <span class="gradient-hero">Region Specific</span> Recommendations</h1>
+		<p class="lead">Get tailored farming advice based on your state's unique climate, soil conditions, and agricultural patterns</p>
+	</div>
+
+	<!-- State Selection -->
+	<div class="card-elegant">
+		<div class="card-padding divider-bottom">
+			<h2 class="heading-section">📍 Select Your State</h2>
+			<p class="text-small text-muted">Choose your state to get region-specific farming recommendations</p>
+		</div>
+		<div class="card-padding">
+			<select class="select" [(ngModel)]="selectedStateValue" (ngModelChange)="selectedState.set(selectedStateValue)">
+				<option *ngFor="let s of states" [value]="s.id">{{ s.name }}</option>
+			</select>
+		</div>
+	</div>
+
+	<ng-container *ngIf="selectedStateData() as data">
+		<!-- Overview -->
+		<div class="grid-two">
+			<div class="card-hero">
+				<div class="card-padding divider-bottom">
+					<h3 class="heading-section">🌡️ {{ data.name }} Climate Profile</h3>
+				</div>
+				<div class="card-padding stack-md">
+					<div class="grid-two text-small">
+						<div>
+							<div class="label">Climate Type</div>
+							<p class="text-muted">{{ data.climate }}</p>
+						</div>
+						<div>
+							<div class="label">Temperature Range</div>
+							<p class="text-muted">{{ data.avgTemp }}</p>
+						</div>
+						<div>
+							<div class="label">Annual Rainfall</div>
+							<p class="text-muted">{{ data.rainfall }}</p>
+						</div>
+						<div>
+							<div class="label">Growing Seasons</div>
+							<p class="text-muted">Kharif: {{ data.seasons.kharif }}<br />Rabi: {{ data.seasons.rabi }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-elegant">
+				<div class="card-padding divider-bottom">
+					<h3 class="heading-section">Agricultural Overview</h3>
+				</div>
+				<div class="card-padding stack-md">
+					<div>
+						<h4 class="label">Major Crops</h4>
+						<div class="chip-row">
+							<span *ngFor="let crop of data.majorCrops" class="badge badge-secondary">{{ crop }}</span>
+						</div>
+					</div>
+					<div>
+						<h4 class="label">Soil Types</h4>
+						<div class="chip-row">
+							<span *ngFor="let soil of data.soilTypes" class="badge">{{ soil }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Alerts -->
+		<div *ngIf="climateAlerts[selectedState()]" class="card-elegant">
+			<div class="card-padding divider-bottom">
+				<h3 class="heading-section">⚠️ Current Alerts & Updates</h3>
+				<p class="text-small text-muted">Important climate and agricultural updates for your region</p>
+			</div>
+			<div class="card-padding stack-md">
+				<div *ngFor="let alert of climateAlerts[selectedState()]" class="alert-row" [ngClass]="alertContainer(alert.type, alert.severity)">
+					<div>🔔</div>
+					<div class="stack-sm">
+						<div class="alert-head">
+							<h4 class="label">{{ alert.title }}</h4>
+							<span class="badge" [ngClass]="{
+								'badge-danger': alert.severity === 'High',
+								'badge-warning': alert.severity === 'Medium',
+								'badge-info': alert.severity === 'Low'
+							}">{{ alert.severity }}</span>
+						</div>
+						<p class="text-small text-muted">{{ alert.description }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Tabs simplified -->
+		<div class="stack-lg">
+			<div class="stack-lg">
+				<div class="card-elegant">
+					<div class="card-padding divider-bottom">
+						<h3 class="heading-section">🌱 Recommended Crops for {{ data.name }}</h3>
+						<p class="text-small text-muted">Optimal crop choices based on local climate and soil conditions</p>
+					</div>
+					<div class="card-padding stack-md">
+						<div *ngFor="let crop of cropRecommendations[selectedState()]" class="card rounded-md">
+							<div class="card-padding crop-head">
+								<div class="crop-left">
+									<h4 class="heading-section" style="font-size: var(--text-lg)">{{ crop.crop }}</h4>
+									<span class="badge" [ngClass]="suitabilityClass(crop.suitability)">{{ crop.suitability }}</span>
+									<span class="badge">{{ crop.season }}</span>
+								</div>
+								<div class="crop-right">
+									<div class="text-small text-secondary" style="font-weight:600">{{ crop.yield }}</div>
+									<div class="text-meta">Expected Yield</div>
+								</div>
+							</div>
+							<div class="card-padding">
+								<div class="grid-three text-small">
+									<div>
+										<div class="label">Sowing</div>
+										<div class="text-muted">{{ crop.sowingTime }}</div>
+									</div>
+									<div>
+										<div class="label">Harvest</div>
+										<div class="text-muted">{{ crop.harvestTime }}</div>
+									</div>
+									<div>
+										<div class="label">Season</div>
+										<div class="text-muted">{{ crop.season }}</div>
+									</div>
+								</div>
+								<p class="text-small text-muted" style="font-style: italic; margin-top: var(--space-2)">{{ crop.notes }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-elegant">
+					<div class="card-padding divider-bottom">
+						<h3 class="heading-section">🚧 Agricultural Challenges in {{ data.name }}</h3>
+					</div>
+					<div class="card-padding stack-md text-small">
+						<div *ngFor="let challenge of data.challenges" class="challenge-row">
+							<div>⚠️</div>
+							<div class="stack-sm">
+								<h4 class="label">{{ challenge }}</h4>
+								<div class="text-muted">
+									<ul class="list-disc list-inside stack-sm" *ngIf="challenge === 'Water scarcity'">
+										<li>Implement drip irrigation systems</li>
+										<li>Use drought-resistant crop varieties</li>
+										<li>Practice rainwater harvesting</li>
+										<li>Optimize irrigation scheduling</li>
+									</ul>
+									<ul class="list-disc list-inside stack-sm" *ngIf="challenge === 'Soil degradation'">
+										<li>Practice crop rotation</li>
+										<li>Use organic fertilizers and compost</li>
+										<li>Implement cover cropping</li>
+										<li>Reduce tillage practices</li>
+									</ul>
+									<ul class="list-disc list-inside stack-sm" *ngIf="challenge === 'Pest resistance'">
+										<li>Use Integrated Pest Management (IPM)</li>
+										<li>Rotate pesticide classes</li>
+										<li>Encourage beneficial insects</li>
+										<li>Monitor pest populations regularly</li>
+									</ul>
+									<ul class="list-disc list-inside stack-sm" *ngIf="challenge === 'Irregular rainfall'">
+										<li>Install weather monitoring systems</li>
+										<li>Use climate-resilient varieties</li>
+										<li>Implement water storage solutions</li>
+										<li>Practice mulching</li>
+									</ul>
+									<ul class="list-disc list-inside stack-sm" *ngIf="challenge === 'Climate variability'">
+										<li>Diversify crop portfolio</li>
+										<li>Use early warning systems</li>
+										<li>Implement adaptive farming practices</li>
+										<li>Consider crop insurance</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card-elegant">
+					<div class="card-padding divider-bottom">
+						<h3 class="heading-section">✅ Agricultural Opportunities in {{ data.name }}</h3>
+					</div>
+					<div class="card-padding stack-md text-small">
+						<div *ngFor="let op of data.opportunities" class="op-row">
+							<div>🌟</div>
+							<div class="stack-sm">
+								<h4 class="label">{{ op }}</h4>
+								<p class="text-muted" *ngIf="op === 'Good irrigation'">Take advantage of established irrigation infrastructure to grow water-intensive but profitable crops.</p>
+								<p class="text-muted" *ngIf="op === 'Market access'">Leverage proximity to major markets and transportation networks to grow market-oriented crops.</p>
+								<p class="text-muted" *ngIf="op === 'Technology adoption'">Embrace modern farming technologies and precision agriculture for improved efficiency.</p>
+								<p class="text-muted" *ngIf="op === 'Diverse agro-climates'">Utilize different climate zones within the state to grow a variety of crops throughout the year.</p>
+								<p class="text-muted" *ngIf="op === 'Export potential'">Focus on quality production of export-oriented crops to access international markets.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Action Cards -->
+			<div class="grid-two">
+				<div class="card-elegant card-padding text-center">
+					<h3 class="heading-section" style="font-size: var(--text-xl)">Get Personalized Recommendations</h3>
+					<p class="text-small text-muted" style="margin-bottom: var(--space-2)">Use our AI tool to get specific recommendations for your farm</p>
+					<button class="btn btn-secondary" style="width:100%">Start Yield Prediction</button>
+				</div>
+				<div class="card-elegant card-padding text-center">
+					<h3 class="heading-section" style="font-size: var(--text-xl)">Connect with Local Experts</h3>
+					<p class="text-small text-muted" style="margin-bottom: var(--space-2)">Get advice from agricultural experts in your region</p>
+					<button class="btn btn-outline" style="width:100%">Find Experts</button>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+</div>

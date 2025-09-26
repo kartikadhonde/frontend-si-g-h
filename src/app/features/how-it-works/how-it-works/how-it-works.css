@@ -1,0 +1,33 @@
+/* How It Works - semantic styles */
+
+/* Process section */
+.process { display:flex; flex-direction:column; gap: var(--space-4); position:relative; }
+@media (min-width: 768px){ .process { flex-direction:row; align-items:flex-start; } }
+.process__left { display:flex; align-items:center; gap: var(--space-3); min-width: 200px; }
+.process__icon { display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:999px; background: var(--accent); border:2px solid var(--color-border); }
+.process__meta { text-align:center; }
+@media (min-width:768px){ .process__meta { text-align:left; } }
+.process__card { flex:1; }
+
+/* Dots & variants */
+.dot { width:8px; height:8px; border-radius:999px; }
+.dot--info { background: #3b82f6; }
+.dot--accent { background: rebeccapurple; }
+.dot--secondary { background: var(--color-secondary); }
+.dot--primary { background: var(--color-primary); }
+
+/* Tech cards */
+.card__header { padding: var(--space-6); border-bottom:1px solid var(--color-border); }
+.card__body { padding: var(--space-6); }
+.tech-icon { padding: var(--space-2); border-radius: var(--radius-md); background: var(--accent); }
+
+/* Benefit stats */
+.stat { font-size: 2rem; font-weight:700; }
+
+/* Utilities */
+.pad-lg { padding: var(--space-8); }
+.center { justify-content:center; }
+.row-sm { display:flex; align-items:center; gap: var(--space-2); }
+.stack-2xs { display:flex; flex-direction:column; gap: var(--space-1); }
+.stack-xs { display:flex; flex-direction:column; gap: var(--space-2); }
+.stack-sm { display:flex; flex-direction:column; gap: var(--space-3); }
