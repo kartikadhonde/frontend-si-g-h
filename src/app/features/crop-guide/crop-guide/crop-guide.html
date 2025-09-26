@@ -7,7 +7,7 @@
 	<div class="filters">
 		<div class="input-with-icon">
 			<input [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)" placeholder="Search crops..." class="input" />
-			<span class="input-icon" aria-hidden="true">🔍</span>
+			<span class="input-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
 		</div>
 		<div class="categories">
 			<button *ngFor="let cat of categories" (click)="selectedCategory.set(cat.id)" class="btn" [ngClass]="selectedCategory()===cat.id ? 'btn-secondary' : 'btn-outline'">{{ cat.name }}</button>
@@ -25,15 +25,15 @@
 			<div class="card-padding stack-md">
 				<div class="stack-sm">
 					<div class="title">{{ crop.name }}</div>
-					<div class="text-small text-muted">🗓️ <span>{{ crop.season }}</span></div>
+					<div class="text-small text-muted"><span class="label">Season:</span> <span>{{ crop.season }}</span></div>
 				</div>
 				<div class="grid-compact">
 					<div class="stat-box">
-						<div>🌡️</div>
+						<div class="text-small text-muted">Temp</div>
 						<div class="stat-value">{{ crop.temperature }}</div>
 					</div>
 					<div class="stat-box">
-						<div>💧</div>
+						<div class="text-small text-muted">Water</div>
 						<div class="stat-value">{{ crop.waterRequirement }}</div>
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 					<summary class="summary-toggle">View Details</summary>
 					<div class="stack-sm details-content">
 						<div>
-							<h5 class="text-meta">🌱 Soil & Climate</h5>
+							<h5 class="text-meta">Soil & Climate</h5>
 							<p class="text-small text-muted">{{ crop.soilType }}</p>
 							<p class="text-small text-muted">{{ crop.climate }}</p>
 						</div>
