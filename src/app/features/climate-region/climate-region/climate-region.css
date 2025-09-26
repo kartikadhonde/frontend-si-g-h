@@ -20,3 +20,32 @@
 .badge-primary { background: var(--color-primary); color: var(--color-primary-foreground); }
 .badge-warning { background: var(--color-warning); color: #1a1a1a; }
 .badge-danger { background: var(--color-danger); color: #fff; }
+
+/* Subtle color splash and animations (scoped to climate page) */
+.page.stack-xl { position: relative; overflow: hidden; }
+.page.stack-xl::after {
+  content: "";
+  position: absolute; left: -12%; bottom: -18%;
+  width: 420px; height: 420px;
+  background: radial-gradient(ellipse at center, rgba(10,37,64,0.12) 0%, rgba(16,185,129,0.12) 50%, rgba(255,255,255,0) 72%);
+  pointer-events: none;
+  filter: blur(6px);
+}
+
+@keyframes fadeUpClimate {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-elegant, .card-hero {
+  animation: fadeUpClimate 420ms var(--easing-standard) both;
+}
+
+.card-elegant:hover, .card-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(10,37,64,0.10);
+  transition: transform 240ms var(--easing-standard), box-shadow 240ms var(--easing-standard);
+}
+
+.badge-secondary { background: #10b981; color: #0b1b2a; }
+.text-secondary { color: #0a2540; }
