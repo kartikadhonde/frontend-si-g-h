@@ -23,17 +23,29 @@ export class YieldPredictionFormComponent {
   protected isSubmitting = signal(false);
   protected form: FormGroup;
 
+  // Dropdown data
   protected readonly crops = [
-    'wheat','rice','maize','soybean','cotton','sugarcane','groundnut','potato'
+    'Arecanut','Arhar/Tur','Castor seed','Cotton(lint)','Dry chillies','Gram','Jute','Linseed','Maize','Mesta','Niger seed','Onion','Other  Rabi pulses','Potato','Rapeseed &Mustard','Rice','Sesamum','Small millets','Sugarcane','Sweet potato','Tapioca','Tobacco','Turmeric','Wheat','Bajra','Black pepper','Cardamom','Coriander','Garlic','Ginger','Groundnut','Horse-gram','Jowar','Ragi','Cashewnut','Banana','Soyabean','Barley','Khesari','Masoor','Moong(Green Gram)','Other Kharif pulses','Safflower','Sannhamp','Sunflower','Urad','Peas & beans (Pulses)','other oilseeds','Other Cereals','Cowpea(Lobia)','Oilseeds total','Guar seed','Other Summer Pulses','Moth'
+  ];
+
+  protected readonly states = [
+    'Assam','Karnataka','Kerala','Meghalaya','West Bengal','Puducherry','Goa','Andhra Pradesh','Tamil Nadu','Odisha','Bihar','Gujarat','Madhya Pradesh','Maharashtra','Mizoram','Punjab','Uttar Pradesh','Haryana','Himachal Pradesh','Tripura','Nagaland','Chhattisgarh','Uttarakhand','Jharkhand','Delhi','Manipur','Jammu and Kashmir','Telangana','Arunachal Pradesh','Sikkim'
+  ];
+
+  protected readonly seasons = [
+    'Whole Year ', 'Kharif     ', 'Rabi       ', 'Autumn     ', 'Summer     ', 'Winter     '
   ];
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      farmLocation: ['', [Validators.required, Validators.minLength(2)]],
-      cropType: ['', Validators.required],
-      soilType: ['', Validators.required],
-      acreage: [null, [Validators.required, Validators.min(0.1)]],
-      sowingDate: ['', Validators.required]
+      crop: ['', Validators.required],
+      cropYear: [new Date().getFullYear(), [Validators.required, Validators.min(1950), Validators.max(2100)]],
+      season: ['', Validators.required],
+      state: ['', Validators.required],
+      area: [null, [Validators.required, Validators.min(0.01)]],
+      annualRainfall: [null, [Validators.required, Validators.min(0)]],
+      fertilizer: [null, [Validators.required, Validators.min(0)]],
+      pesticide: [null, [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -41,7 +53,7 @@ export class YieldPredictionFormComponent {
     if (this.form.invalid || this.isSubmitting()) return;
     this.isSubmitting.set(true);
 
-    const value = this.form.value;
+    const value = this.form.value as any;
     // Mock prediction logic
     setTimeout(() => {
       const randomYield = (Math.random() * 5 + 2).toFixed(2); // 2 - 7 tons/ha
@@ -50,8 +62,9 @@ export class YieldPredictionFormComponent {
       const result: YieldPredictionResult = {
         predictedYield: `${randomYield} tons/ha`,
         confidence,
-        cropType: value.cropType,
-        farmLocation: value.farmLocation,
+        cropType: value.crop,
+        // Show state as location in history
+        farmLocation: value.state,
         createdAt: new Date()
       };
       this.predictionGenerated.emit(result);

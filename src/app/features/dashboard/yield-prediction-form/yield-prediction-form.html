@@ -2,37 +2,65 @@
   <form [formGroup]="form" (ngSubmit)="submit()" class="prediction-form__body">
     <div class="prediction-form__intro">
       <h3 class="prediction-form__title">Yield Prediction</h3>
-      <p class="prediction-form__subtitle">Enter field & crop details to get an AI prediction</p>
+      <p class="prediction-form__subtitle">Provide field & crop details to get an AI prediction</p>
     </div>
 
     <div class="prediction-form__grid">
       <div class="form-field">
-        <label class="field-label">Farm Location <span class="required-indicator">*</span></label>
-        <input type="text" formControlName="farmLocation" class="input" placeholder="e.g. Ludhiana, Punjab" />
-        <div class="field-error" *ngIf="form.get('farmLocation')?.invalid && form.get('farmLocation')?.touched">Location is required (min 2 chars)</div>
-      </div>
-      <div class="form-field">
-        <label class="field-label">Crop Type <span class="required-indicator">*</span></label>
-        <select formControlName="cropType" class="select">
+        <label class="field-label">Crop <span class="required-indicator">*</span></label>
+        <select formControlName="crop" class="select">
           <option value="">Select crop</option>
-          <option *ngFor="let c of crops" [value]="c">{{ c | titlecase }}</option>
+          <option *ngFor="let c of crops" [value]="c">{{ c }}</option>
         </select>
-        <div class="field-error" *ngIf="form.get('cropType')?.invalid && form.get('cropType')?.touched">Crop type required</div>
+        <div class="field-error" *ngIf="form.get('crop')?.invalid && form.get('crop')?.touched">Crop is required</div>
       </div>
+
       <div class="form-field">
-        <label class="field-label">Soil Type <span class="required-indicator">*</span></label>
-        <input type="text" formControlName="soilType" class="input" placeholder="e.g. Loamy" />
-        <div class="field-error" *ngIf="form.get('soilType')?.invalid && form.get('soilType')?.touched">Soil type required</div>
+        <label class="field-label">Crop Year <span class="required-indicator">*</span></label>
+        <input type="number" formControlName="cropYear" class="input" placeholder="e.g. 2024" />
+        <div class="field-error" *ngIf="form.get('cropYear')?.invalid && form.get('cropYear')?.touched">Enter a valid year</div>
       </div>
+
       <div class="form-field">
-        <label class="field-label">Acreage (ha) <span class="required-indicator">*</span></label>
-        <input type="number" step="0.01" formControlName="acreage" class="input" placeholder="e.g. 3.5" />
-        <div class="field-error" *ngIf="form.get('acreage')?.invalid && form.get('acreage')?.touched">Enter valid acreage</div>
+        <label class="field-label">Season <span class="required-indicator">*</span></label>
+        <select formControlName="season" class="select">
+          <option value="">Select season</option>
+          <option *ngFor="let s of seasons" [value]="s">{{ s }}</option>
+        </select>
+        <div class="field-error" *ngIf="form.get('season')?.invalid && form.get('season')?.touched">Season is required</div>
       </div>
-      <div class="form-field form-field--full">
-        <label class="field-label">Sowing Date <span class="required-indicator">*</span></label>
-        <input type="date" formControlName="sowingDate" class="input" />
-        <div class="field-error" *ngIf="form.get('sowingDate')?.invalid && form.get('sowingDate')?.touched">Sowing date required</div>
+
+      <div class="form-field">
+        <label class="field-label">State <span class="required-indicator">*</span></label>
+        <select formControlName="state" class="select">
+          <option value="">Select state</option>
+          <option *ngFor="let st of states" [value]="st">{{ st }}</option>
+        </select>
+        <div class="field-error" *ngIf="form.get('state')?.invalid && form.get('state')?.touched">State is required</div>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label">Area (ha) <span class="required-indicator">*</span></label>
+        <input type="number" step="0.01" formControlName="area" class="input" placeholder="e.g. 3.5" />
+        <div class="field-error" *ngIf="form.get('area')?.invalid && form.get('area')?.touched">Enter valid area</div>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label">Annual Rainfall (mm) <span class="required-indicator">*</span></label>
+        <input type="number" step="0.01" formControlName="annualRainfall" class="input" placeholder="e.g. 850" />
+        <div class="field-error" *ngIf="form.get('annualRainfall')?.invalid && form.get('annualRainfall')?.touched">Enter a non-negative number</div>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label">Fertilizer (kg) <span class="required-indicator">*</span></label>
+        <input type="number" step="0.01" formControlName="fertilizer" class="input" placeholder="e.g. 120" />
+        <div class="field-error" *ngIf="form.get('fertilizer')?.invalid && form.get('fertilizer')?.touched">Enter a non-negative number</div>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label">Pesticide (kg) <span class="required-indicator">*</span></label>
+        <input type="number" step="0.01" formControlName="pesticide" class="input" placeholder="e.g. 15" />
+        <div class="field-error" *ngIf="form.get('pesticide')?.invalid && form.get('pesticide')?.touched">Enter a non-negative number</div>
       </div>
     </div>
 
