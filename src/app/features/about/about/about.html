@@ -1,7 +1,7 @@
 <div class="page stack-xl">
 	<!-- Hero Section -->
 	<div class="text-center stack-md">
-		<span class="badge badge-secondary">SIH Hackathon 2024</span>
+		<span class="badge badge-secondary">SIH Hackathon 2025</span>
 		<h1 class="heading-xl">
 			AI-Powered Crop Yield
 			<span class="gradient-hero bg-clip-text text-transparent"> Prediction & Optimization</span>
@@ -45,6 +45,27 @@
 		</div>
 	</div>
 
+	<div class="space-y-8">
+		<div class="text-center">
+			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Development Team</h2>
+			<p class="text-muted" style="max-width: 48rem; margin: 0 auto;">
+				Passionate developers and researchers working on the SIH hackathon project
+			</p>
+		</div>
+		<div class="grid-four">
+			<div *ngFor="let member of team" class="card-elegant hover-lift">
+				<div class="card__body text-center">
+					<div class="bg-gradient-hero" style="width:64px;height:64px;border-radius:999px;margin:0 auto var(--space-4);display:flex;align-items:center;justify-content:center;">
+						<span>{{ member.icon }}</span>
+					</div>
+					<h3 style="font-weight:600; margin-bottom: var(--space-1)">{{ member.name }}</h3>
+					<p class="text-small text-secondary" style="font-weight:500; margin-bottom: var(--space-2)">{{ member.role }}</p>
+					<p class="text-meta text-muted" style="margin-bottom: var(--space-2)">{{ member.expertise }}</p>
+					<span class="badge">{{ member.experience }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Technical Approach -->
 	<div class="space-y-8">
 		<div class="text-center">
@@ -83,27 +104,7 @@
 	</div>
 
 	<!-- Development Team -->
-	<div class="space-y-8">
-		<div class="text-center">
-			<h2 class="heading-section" style="margin-bottom: var(--space-4)">Development Team</h2>
-			<p class="text-muted" style="max-width: 48rem; margin: 0 auto;">
-				Passionate developers and researchers working on the SIH hackathon project
-			</p>
-		</div>
-		<div class="grid-four">
-			<div *ngFor="let member of team" class="card-elegant hover-lift">
-				<div class="card__body text-center">
-					<div class="bg-gradient-hero" style="width:64px;height:64px;border-radius:999px;margin:0 auto var(--space-4);display:flex;align-items:center;justify-content:center;">
-						<span>{{ member.icon }}</span>
-					</div>
-					<h3 style="font-weight:600; margin-bottom: var(--space-1)">{{ member.name }}</h3>
-					<p class="text-small text-secondary" style="font-weight:500; margin-bottom: var(--space-2)">{{ member.role }}</p>
-					<p class="text-meta text-muted" style="margin-bottom: var(--space-2)">{{ member.expertise }}</p>
-					<span class="badge">{{ member.experience }}</span>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 
 	<!-- Project Overview -->
 	<div class="card-elegant">
@@ -116,7 +117,7 @@
 		<div class="card__body stack-sm text-muted">
 			<p>
 				This project addresses the critical need for data-driven agricultural insights in India. 
-				Developed for the Smart India Hackathon 2024 under the Agriculture, FoodTech & Rural 
+				Developed for the Smart India Hackathon 2025 under the Agriculture, FoodTech & Rural 
 				Development theme, our solution leverages machine learning models to predict crop yields 
 				using historical agricultural data, weather patterns, and soil health metrics.
 			</p>
@@ -138,14 +139,5 @@
 	</div>
 
 	<!-- CTA -->
-	<div class="text-center stack-md" style="padding: var(--space-8) 0;">
-		<h2 class="heading-section">Ready to Experience AI-Powered Agriculture?</h2>
-		<p class="text-muted" style="max-width: 40rem; margin: 0 auto;">
-			Explore our platform and discover how machine learning can optimize your crop yield predictions
-		</p>
-		<button class="btn btn-secondary">
-			Explore Platform
-			<span style="margin-left: var(--space-2)">→</span>
-		</button>
-	</div>
+	
 </div>
